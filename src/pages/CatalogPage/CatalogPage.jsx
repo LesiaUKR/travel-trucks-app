@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { fetchAllCampers } from "../../redux/campers/operations";
 import { CatalogContainer, CatalogSection } from "./CatalogPage.styled";
 import FilterBar from "../../components/FilterBar/FilterBar";
+import ItemList from "../../components/ItemList/ItemList";
 
 
 const CatalogPage = () => {
@@ -22,12 +23,8 @@ console.log("camperItems", camperItems);
 
     <CatalogSection>
     <CatalogContainer>
-      
         <FilterBar />
-
-
-        {/* <ItemList  campers={camperItems} /> */}
-
+        <ItemList  campers={camperItems} />
     </CatalogContainer>
     </CatalogSection>
   );

@@ -13,7 +13,7 @@ body {
   color: ${(props) => props.theme.textColorPrimary};
   margin: 0;
   font-family: "Inter", sans-serif;
-    color: ${(props) => props.theme.textColorPrimary};
+  color: ${(props) => props.theme.textColorPrimary};
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -47,10 +47,11 @@ body {
   text-decoration:none;
       color: white;
  }
+
  input,
-button,
-textarea,
-select {
+ button,
+ textarea,
+ select {
   font: inherit;
 }
 button {
