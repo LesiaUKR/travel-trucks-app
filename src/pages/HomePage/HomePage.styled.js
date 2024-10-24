@@ -2,12 +2,18 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import heroVanWithSunset from "/images/hero-van-with-sunset.png";
 
+export const HomeMainContent = styled.main`
+  padding-top: 72px;
+  min-height: calc(100vh - 72px);
+`;
+
+
 export const HomeSection = styled.section`
   background-image: url(${heroVanWithSunset});
   background-repeat: no-repeat;
   background-position: center;
-  padding-top: 260px;
-  padding-bottom: 260px;
+  background-size: cover;
+  height: 100vh; 
 `;
 
 export const HeroContainer = styled.div`

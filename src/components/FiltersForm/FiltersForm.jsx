@@ -6,23 +6,11 @@ import {
   Form,
   VehicleFilters,
 } from "./FiltersForm.styled";
-
+import { vehicleEquipmentFilters, vehicleTypeFilters } from "../../helpers/filterData";
 
 const FiltersForm = () => {
   const [isInputFocused, setIsInputFocused] = useState(false);
   const theme = useTheme();
-  const vehicleEquipmentFilters = [
-    { icon: "ac", text: "AC" },
-    { icon: "transmission", text: "Automatic" },
-    { icon: "kitchen", text: "Kitchen" },
-    { icon: "tv", text: "TV" },
-    { icon: "bathroom", text: "Bathroom" },
-  ];
-  const VehicleTypeFilters = [
-    { icon: "van", text: "Van" },
-    { icon: "fully-integrated", text: "Fully Integrated" },
-    { icon: "alcove", text: "Alcove" },
-  ];
   return (
     <Form>
       <div className="locationContainer">
@@ -66,7 +54,7 @@ const FiltersForm = () => {
       <div>
         <h3 className="filtersTypeTitle">Vehicle type</h3>
         <VehicleFilters>
-          {VehicleTypeFilters.map(({ icon, text }) => (
+          {vehicleTypeFilters.map(({ icon, text }) => (
             <li key={text} className="filterWrap">
              
               <Icon name={icon} width={40} height={28}  fill={theme.iconColorFirst}/>

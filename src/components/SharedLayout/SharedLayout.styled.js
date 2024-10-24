@@ -1,7 +1,17 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
+export const MainContent = styled.main`
+  padding-top: 120px;
+  min-height: calc(100vh - 120px);
+`;
+
 export const Header = styled.header`
+ position: fixed;
+ top: 0; 
+  left: 0; 
+  width: 100%;
+  z-index: 1000; 
   padding: 24px 0;
   border-bottom: 1px solid ${({ theme }) => theme.categoryBadgeBackground};
   background: ${({ theme }) => theme.headerBgColor};

@@ -5,6 +5,7 @@ import { fetchAllCampers } from "../../redux/campers/operations";
 import { CatalogContainer, CatalogSection } from "./CatalogPage.styled";
 import FilterBar from "../../components/FilterBar/FilterBar";
 import ItemList from "../../components/ItemList/ItemList";
+import { MainContent } from "../../components/SharedLayout/SharedLayout.styled";
 
 
 const CatalogPage = () => {
@@ -15,18 +16,19 @@ useEffect(() => {
   dispatch(fetchAllCampers());
 }, [dispatch]);
 
-console.log("campers", campers);
+
 const camperItems = campers?.items || [];
-console.log("camperItems", camperItems);
+
 
   return (
-
+    <MainContent>
     <CatalogSection>
     <CatalogContainer>
         <FilterBar />
         <ItemList  campers={camperItems} />
     </CatalogContainer>
     </CatalogSection>
+    </MainContent>
   );
 };
 

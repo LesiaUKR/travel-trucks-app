@@ -3,7 +3,7 @@ import CategoryBadge from "../CategoryBadge/CategoryBadge";
 import Icon from "../Icon/Icon";
 import { formattedLocation } from "../../helpers/formattedLocation";
 import { formattedPrice } from "../../helpers/formattedPrice";
-import { capitalizedFirstLetter } from "./../../helpers/capitalizedFirstLetter";
+
 import {
   CardDescription,
   CardInfo,
@@ -15,6 +15,7 @@ import {
 } from "./ItemCard.styled";
 import { useTheme } from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { getCategories } from "../../helpers/categoryList";
 
 const ItemCard = ({ advert }) => {
   const {
@@ -30,16 +31,10 @@ const ItemCard = ({ advert }) => {
     reviews,
   } = advert;
 
-  console.log("advert", advert);
   const theme = useTheme();
   const navigate = useNavigate();
 
-  const categories = [
-    { icon: "transmission", text: `${capitalizedFirstLetter(transmission)}` },
-    { icon: "engine", text: `${capitalizedFirstLetter(engine)}` },
-    { icon: "kitchen", text: `Kitchen` },
-    { icon: "ac", text: `AC` },
-  ];
+  const categories = getCategories({ transmission, engine });
 
   const cardImage = gallery[0].thumb;
 

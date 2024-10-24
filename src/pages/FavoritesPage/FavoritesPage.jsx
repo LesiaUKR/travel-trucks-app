@@ -1,7 +1,7 @@
-import React from "react";
+import { MainContent } from "../../components/SharedLayout/SharedLayout.styled";
 
 const FavoritesPage = () => {
-  return <div>FavoritesPage</div>;
+  return <MainContent>FavoritesPage</MainContent>;
 };
 
 export default FavoritesPage;

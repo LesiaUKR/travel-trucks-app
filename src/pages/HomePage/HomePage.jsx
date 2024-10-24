@@ -1,10 +1,14 @@
 
-import { HeroContainer, HomeSection, HeroTitle, HeroLink, HeroText } from "./HomePage.styled";
+import { HeroContainer, HomeSection, HeroTitle, HeroLink, HeroText, HomeMainContent } from "./HomePage.styled";
 
 
 
 const HomePage = () => {
-  return <HomeSection>
+
+  return  (
+  
+  <HomeMainContent>
+  <HomeSection>
     <HeroContainer>
 
       <HeroTitle>Campers of your dreams</HeroTitle>
@@ -12,6 +16,7 @@ const HomePage = () => {
     <HeroLink to="/catalog">View Now</HeroLink>
     </HeroContainer>
       </HomeSection>;
+      </HomeMainContent>)
 };
 
 export default HomePage;

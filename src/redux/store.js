@@ -5,4 +5,3 @@ export const store = configureStore({
   reducer: { campers: campersReducer },
 });
 
-console.log(store.getState());
