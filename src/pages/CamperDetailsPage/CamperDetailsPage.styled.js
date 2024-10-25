@@ -13,7 +13,8 @@ margin: 0 auto;
 export const DetailsWrapper = styled.div`
 display: flex;
 justify-content: space-between;
-align-items: center;
+align-items: flex-start;
+gap: 40px;
 
 `
 export const DetailsTabsList = styled.ul`
@@ -28,7 +29,7 @@ border-bottom: 1px solid ${(props) => props.theme.bookFormBorder};
 
 export const DetailsTabsBtn = styled.button`
  position: relative;
-color: #101828;
+ color: ${(props) => props.theme.textColorPrimary};
 padding: 0;
 padding-bottom: 24px;
 font-family: Inter;

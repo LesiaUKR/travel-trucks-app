@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCampers, fetchAllCampers } from "./operations";
+import { fetchCampers, fetchAllCampers, fetchCamperById } from "./operations";
 
 const initialState = {
    campers: {
      items: [],
+     selectedCamper: null,
      favorites: [],
      isLoading: false,
      error: null,
@@ -58,6 +59,18 @@ const campersSlice = createSlice({
         console.log('Fetched campers:', action.payload);
       })
       .addCase(fetchAllCampers.rejected, (state, action) => {
+        state.campers.isLoading = false;
+        state.campers.error = action.payload;
+      })
+      .addCase(fetchCamperById.pending, (state) => {
+        state.campers.isLoading = true;
+      })
+      .addCase(fetchCamperById.fulfilled, (state, action) => {
+        state.campers.isLoading = false;
+        state.campers.error = null;
+        state.campers.selectedCamper = action.payload; // Зберігаємо знайденого кемпера
+      })
+      .addCase(fetchCamperById.rejected, (state, action) => {
         state.campers.isLoading = false;
         state.campers.error = action.payload;
       });

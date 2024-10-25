@@ -1,5 +1,7 @@
 export const selectCampers = (state) => state.campers.campers.items;
 
+export const selectSelectedCamper = (state) => state.campers.campers.selectedCamper; 
+
 export const selectFilterCampers = (state) => state.campers.filter;
 
 export const selectFavoriteCampers = (state) => state.campers.campers.favorites;
