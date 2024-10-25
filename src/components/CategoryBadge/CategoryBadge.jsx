@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import Icon from "../Icon/Icon";
 import { CategoryNameWrapper, IconWrapper } from "./CategoryBadge.styled";
 

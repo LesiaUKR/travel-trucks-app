@@ -6,8 +6,6 @@ export const IconWrapper = styled.span`
   width: 20px;
   height: 20px;
 
-  svg {
-  }
 `;
 export const CategoryNameWrapper = styled.span`
   color: #101828;

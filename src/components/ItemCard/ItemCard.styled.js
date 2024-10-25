@@ -130,19 +130,4 @@ export const CardText = styled.span`
   line-height: 1.5;
 `;
 
-export const CategoryList = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  max-width: 392px;
 
-  .category-item {
-    display: flex;
-    padding: 12px 18px;
-    align-items: center;
-    gap: 8px;
-
-    border-radius: 100px;
-    background: ${({ theme }) => theme.categoryBadgeBackground};
-  }
-`;

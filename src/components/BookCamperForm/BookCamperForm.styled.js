@@ -9,6 +9,11 @@ border: none;
 border-radius: 10px;
 outline: 1px solid ${({ theme }) => theme.bookFormBorder};
 
+.bookFormBtn {
+    display: block;
+    margin: 0 auto;
+    width: 166px;
+  }
 `
 
 export const BookFormTitle = styled.h3`

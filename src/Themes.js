@@ -1,6 +1,6 @@
 export const darkTheme = {
    body: "rgb(36, 36, 36)",
-   textColorPrimary: "rgba(249, 249, 249, 0.75);",
+   textColorPrimary: "#fff",
    textColorSecondary: "#F2F4F7",
    textColorThird: "#F2F4F7",
    textColorFourth: "#6C717B",
@@ -18,6 +18,7 @@ export const darkTheme = {
    inputBackground: "#F7F7F7",
    categoryBadgeBackground: "#F2F4F7",
    bookFormBorder: "#DADDE1",
+   camperFeaturesWrapperColor: "#6C717B",
  };
  export const lightTheme = {
    body: "#fff",
@@ -40,5 +41,6 @@ export const darkTheme = {
    categoryBadgeBackground: "#F2F4F7",
    headerBgColor: "#F7F7F7",
    bookFormBorder: "#DADDE1",
+   camperFeaturesWrapperColor: "#F7F7F7",
  };
  

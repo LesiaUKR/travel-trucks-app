@@ -1,6 +1,7 @@
 import { BookForm, BookFormInputWrapper, BookFormText, BookFormTitle } from './BookCamperForm.styled'
 import InputDefault from '../InputDefault/InputDefault'
 import InputDatePicker from '../InputDatePicker/InputDatePicker'
+import DefaultBtn from './../DefaultBtn/DefaultBtn';
 
 export default function BookCamperForm() {
   return (
@@ -13,6 +14,7 @@ export default function BookCamperForm() {
 <InputDatePicker className="bookFormInput" placeholder="Booking date*" />
 <InputDefault type="textarea" className="bookFormTextarea" placeholder="Comment"/>
     </BookFormInputWrapper>
+    <DefaultBtn type="submit" text="Send" className="bookFormBtn" />
     </BookForm>
   )
 }

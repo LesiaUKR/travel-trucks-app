@@ -1,5 +1,4 @@
 import DefaultBtn from "../DefaultBtn/DefaultBtn";
-import CategoryBadge from "../CategoryBadge/CategoryBadge";
 import Icon from "../Icon/Icon";
 import { formattedLocation } from "../../helpers/formattedLocation";
 import { formattedPrice } from "../../helpers/formattedPrice";
@@ -10,12 +9,13 @@ import {
   CardReviewLocationBox,
   CardText,
   CardTitleBox,
-  CategoryList,
   ItemCardContainer,
 } from "./ItemCard.styled";
 import { useTheme } from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { getCategories } from "../../helpers/categoryList";
+import CategoryList from "../CategoryList/CategoryList";
+
 
 const ItemCard = ({ advert }) => {
   const {
@@ -24,8 +24,6 @@ const ItemCard = ({ advert }) => {
     price,
     rating,
     location,
-    engine,
-    transmission,
     description,
     gallery,
     reviews,
@@ -34,8 +32,7 @@ const ItemCard = ({ advert }) => {
   const theme = useTheme();
   const navigate = useNavigate();
 
-  const categories = getCategories({ transmission, engine });
-
+  const categories = getCategories(advert);
   const cardImage = gallery[0].thumb;
 
   const handleShowMoreBtn = () => {
@@ -80,14 +77,7 @@ navigate(`/catalog/${id}`);
           </div>
         </CardReviewLocationBox>
         <CardDescription>{description}</CardDescription>
-        <CategoryList>
-          {categories.map((category) => (
-            <li key={category.icon} className="category-item">
-              <CategoryBadge icon={category.icon} feature={category.text} />
-            </li>
-          ))}
-        </CategoryList>
-
+       <CategoryList categories={categories}/>
         <DefaultBtn onClick={handleShowMoreBtn} type="button" text="Show more" className="show-more-btn" />
       </CardInfo>
     </ItemCardContainer>
