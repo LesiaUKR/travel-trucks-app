@@ -1,5 +1,13 @@
 import styled from "styled-components";
 
+export const CatalogMainContent = styled.main`
+
+`
+export const AsideContainer = styled.div`
+  padding-left: 64px;
+  padding-top: 48px;
+`
+
 export const CatalogSection = styled.section`
   padding: 48px 0px 52px 0px;
 `;
@@ -11,6 +19,6 @@ export const CatalogContainer = styled.div`
   justify-content: center;
 
   max-width: 1440px;
-  padding: 0px 64px 0px 64px;
+  padding-right: 64px;
   margin: 0 auto;
 `;

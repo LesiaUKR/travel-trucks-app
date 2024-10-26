@@ -1,6 +1,5 @@
-import { useParams } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 import { MainContent } from "../../components/SharedLayout/SharedLayout.styled";
-import Features from "../../components/Features/Features";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectError,
@@ -12,16 +11,23 @@ import {
   DetailsWrapper,
   DetailsTabsList,
   DetailsSection,
-  DetailsTabsBtn,
+  DetailsTabsLink,
+  CamperTitle,
+  ReviewLocationWrapper,
+  CamperPrice,
+  CamperDescription,
+  CamperImagesList,
+  CamperImagesItem,
+  CamperImage,
 } from "./CamperDetailsPage.styled";
 import BookCamperForm from "./../../components/BookCamperForm/BookCamperForm";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { fetchCamperById } from "../../redux/campers/operations";
-import Reviews from "../../components/Reviews/Reviews";
+import ReviewBox from "../../components/ReviewBox/ReviewBox";
+import LocationBox from "../../components/LocationBox/LocationBox";
+import { formattedPrice } from "../../helpers/formattedPrice";
 
 export default function CamperDetailsPage() {
-  const [activeTab, setActiveTab] = useState("features");
-
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -36,38 +42,53 @@ export default function CamperDetailsPage() {
 
   if (isLoading) return <p>Loading camper details...</p>;
   if (error) return <p>Error: {error}</p>;
-
-  const handleTabClick = (tab) => {
-    setActiveTab(tab);
-  };
-
   if (!camper) return <p>Loading camper details...</p>;
+
+  const { name, rating, reviews, location, price, description, gallery } = camper;
+
+   const isFeaturesActive = location.pathname === `/catalog/${id}` || location.pathname === `/catalog/${id}/features`;
 
   return (
     <MainContent>
       <DetailsSection>
         <DetailsContainer>
+          <CamperTitle>{name}</CamperTitle>
+          <ReviewLocationWrapper>
+        <ReviewBox rating={rating} reviews={reviews} id={id}/>
+        <LocationBox location={location} />
+        </ReviewLocationWrapper>
+        <CamperPrice className="card-price">{formattedPrice(price)}</CamperPrice>
+          
+          <CamperImagesList>
+{gallery.map(({thumb}, index) => (
+  <CamperImagesItem key={index}>
+    <CamperImage src={thumb} alt={name} />
+  </CamperImagesItem>
+))}
+
+          </CamperImagesList>
+        <CamperDescription>{description}</CamperDescription>
+          
           <DetailsTabsList>
             <li>
-              <DetailsTabsBtn
-                className={activeTab === "features" ? "active" : ""}
-                onClick={() => handleTabClick("features")}
+              <DetailsTabsLink
+                to="features"
+                className={isFeaturesActive ? "active" : ""}
               >
                 Features
-              </DetailsTabsBtn>
+              </DetailsTabsLink>
             </li>
             <li>
-              <DetailsTabsBtn
-                className={activeTab === "reviews" ? "active" : ""}
-                onClick={() => handleTabClick("reviews")}
+              <DetailsTabsLink
+                to="reviews"
+                className={({ isActive }) => (isActive ? "active" : "")}
               >
                 Reviews
-              </DetailsTabsBtn>
+              </DetailsTabsLink>
             </li>
           </DetailsTabsList>
           <DetailsWrapper>
-            {activeTab === "features" && <Features camper={camper} />}
-            {activeTab === "reviews" && <Reviews camper={camper} />}
+          <Outlet context={{ camper }} />
             <BookCamperForm />
           </DetailsWrapper>
         </DetailsContainer>

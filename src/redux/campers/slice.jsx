@@ -3,9 +3,10 @@ import { fetchCampers, fetchAllCampers, fetchCamperById } from "./operations";
 
 const initialState = {
    campers: {
+     totalItems: 0,
      items: [],
      selectedCamper: null,
-     favorites: [],
+     favorites:  JSON.parse(localStorage.getItem("favorites")) || [], // Отримуємо збережені обрані або пустий масив,
      isLoading: false,
      error: null,
    },
@@ -30,6 +31,15 @@ const campersSlice = createSlice({
     setType(state, action) {
       state.filter.type = action.payload;
     },
+    toggleFavorite: (state, action) => {
+      const camperId = action.payload;
+      if (state.campers.favorites.includes(camperId)) {
+        state.campers.favorites = state.campers.favorites.filter(id => id !== camperId);
+      } else {
+        state.campers.favorites.push(camperId);
+      }
+      localStorage.setItem("favorites", JSON.stringify(state.campers.favorites)); // Зберігаємо в localStorage
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -39,11 +49,17 @@ const campersSlice = createSlice({
       .addCase(fetchCampers.fulfilled, (state, action) => {
         state.campers.isLoading = false;
         state.campers.error = null;
-        const newItems = action.payload.map((item) => ({
-          ...item,
-        }));
-        state.campers.items = [...state.campers.items, ...newItems];
-        console.log('Campers fetched successfully:', state.campers.items);
+        console.log('action.payload', action.payload);
+        if (action.meta.arg.page === 1) {
+          state.campers.items = action.payload.items;
+        } else {
+          // Додаємо нові елементи при натисканні "Load More"
+          state.campers.items = [...state.campers.items, ...action.payload.items];
+          console.log('Campers fetched successfully:', state.campers.items);
+        }
+        
+        state.campers.total = action.payload.total;
+        console.log('Total campers:', state.campers.total);
       })
       .addCase(fetchCampers.rejected, (state, action) => {
         state.campers.isLoading = false;
@@ -78,4 +94,4 @@ const campersSlice = createSlice({
 });
 
 export const campersReducer = campersSlice.reducer;
-export const { setLocation, setEquipment, setType } = campersSlice.actions;
+export const { setLocation, setEquipment, setType, toggleFavorite  } = campersSlice.actions;

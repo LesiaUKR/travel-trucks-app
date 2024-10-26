@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 export const MainContent = styled.main`
-  padding-top: 120px;
-  min-height: calc(100vh - 120px);
+  padding-top: 72px;
+  min-height: calc(100vh - 72px);
 `;
 
 export const Header = styled.header`

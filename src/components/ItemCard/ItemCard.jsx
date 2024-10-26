@@ -1,13 +1,10 @@
 import DefaultBtn from "../DefaultBtn/DefaultBtn";
 import Icon from "../Icon/Icon";
-import { formattedLocation } from "../../helpers/formattedLocation";
 import { formattedPrice } from "../../helpers/formattedPrice";
-
 import {
   CardDescription,
   CardInfo,
   CardReviewLocationBox,
-  CardText,
   CardTitleBox,
   ItemCardContainer,
 } from "./ItemCard.styled";
@@ -15,30 +12,32 @@ import { useTheme } from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { getCategories } from "../../helpers/categoryList";
 import CategoryList from "../CategoryList/CategoryList";
-
+import ReviewBox from "../ReviewBox/ReviewBox";
+import LocationBox from "../LocationBox/LocationBox";
+import { useDispatch, useSelector } from "react-redux";
+import { selectFavoriteCampers } from "../../redux/campers/selectors";
+import { toggleFavorite } from "../../redux/campers/slice";
 
 const ItemCard = ({ advert }) => {
-  const {
-    id,
-    name,
-    price,
-    rating,
-    location,
-    description,
-    gallery,
-    reviews,
-  } = advert;
+  const { id, name, price, rating, location, description, gallery, reviews } =
+    advert;
 
   const theme = useTheme();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const favorites = useSelector(selectFavoriteCampers);
+  const isFavorite = favorites.includes(id);
+console.log('favorites:', favorites);
 
-  const categories = getCategories(advert);
-  const cardImage = gallery[0].thumb;
+  const handleToggleFavorite = () => {
+    dispatch(toggleFavorite(id));
+  };
 
   const handleShowMoreBtn = () => {
-navigate(`/catalog/${id}`);
-  }
-
+    navigate(`/catalog/${id}`);
+  };
+  const categories = getCategories(advert);
+  const cardImage = gallery[0].thumb;
   return (
     <ItemCardContainer>
       <div className="card-img-box">
@@ -49,36 +48,23 @@ navigate(`/catalog/${id}`);
           <h2 className="card-title">{name}</h2>
           <div className="card-price-box">
             <p className="card-price">{formattedPrice(price)}</p>
-            <button type="button" className="reset-btn">
-              <Icon name="heart-default" />
+            <button type="button" className="reset-btn" onClick={handleToggleFavorite}>
+              <Icon name="heart-default" stroke={isFavorite ? theme.buttonColor : theme.iconColorFirst}/>
             </button>
           </div>
         </CardTitleBox>
         <CardReviewLocationBox>
-          <div className="review-box">
-            <span className="icon-box">
-              <Icon
-                name="star"
-                stroke={theme.iconStarColor}
-                fill={theme.iconStarColor}
-              />
-            </span>
-            <button type="button" className="reset-btn review-btn">
-              <CardText>
-                {rating}({reviews.length} Reviews)
-              </CardText>
-            </button>
-          </div>
-          <div className="location-box">
-            <span className="icon-box location-icon">
-              <Icon name="map" stroke={theme.iconColorFirst} />
-            </span>
-            <CardText>{formattedLocation(location)}</CardText>
-          </div>
+        <ReviewBox rating={rating} reviews={reviews} theme={theme} id={id}/>
+        <LocationBox location={location} theme={theme} />
         </CardReviewLocationBox>
         <CardDescription>{description}</CardDescription>
-       <CategoryList categories={categories}/>
-        <DefaultBtn onClick={handleShowMoreBtn} type="button" text="Show more" className="show-more-btn" />
+        <CategoryList categories={categories} />
+        <DefaultBtn
+          onClick={handleShowMoreBtn}
+          type="button"
+          text="Show more"
+          className="show-more-btn"
+        />
       </CardInfo>
     </ItemCardContainer>
   );

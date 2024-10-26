@@ -68,10 +68,6 @@ export const CardTitleBox = styled.div`
   .reset-btn {
     width: 24px;
     height: 24px;
-
-    svg {
-      stroke: ${({ theme }) => theme.iconColorFirst};
-    }
   }
 `;
 
@@ -80,31 +76,6 @@ export const CardReviewLocationBox = styled.div`
   justify-content: flex-start;
   gap: 16px;
   margin-top: -16px;
-
-  .review-box,
-  .location-box {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-  .icon-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 16px;
-    height: 16px;
-  }
-
-  .review-btn {
-    color: ${({ theme }) => theme.textColorPrimary};
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.5;
-
-    span {
-      border-bottom: 1px solid ${({ theme }) => theme.textColorPrimary};
-    }
-  }
 `;
 
 export const CardDescription = styled.p`
@@ -123,11 +94,6 @@ export const CardDescription = styled.p`
   line-height: 1.5;
 `;
 
-export const CardText = styled.span`
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.5;
-`;
+
 
 

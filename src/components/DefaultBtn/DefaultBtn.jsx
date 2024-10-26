@@ -1,4 +1,3 @@
-import React from "react";
 import { StyledBtn } from "./DefaultBtn.styled";
 
 const DefaultBtn = ({ text, className, type, onClick }) => {

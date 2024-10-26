@@ -1,11 +1,12 @@
 import { Avatar, Comment, Info, Name, NoReviews, Rating, ReviewsHeader, ReviewsItem, ReviewsList, StarWrapper } from './Reviews.styled';
 import Icon from "../Icon/Icon";
+import { useOutletContext } from 'react-router-dom';
 
 
-export default function Reviews({ camper }) {
-  const { reviews } = camper;
+export default function Reviews() {
+   const { camper } = useOutletContext();
 
-  if (!reviews?.length) return <NoReviews>No reviews</NoReviews>;
+  if (!camper.reviews?.length) return <NoReviews>No reviews</NoReviews>;
   
   const renderStars = (rating) => {
    return Array.from({ length: 5 }, (_, index) => (
@@ -23,7 +24,7 @@ export default function Reviews({ camper }) {
 
   return (
    <ReviewsList>
-   {reviews.map(({ reviewer_name, reviewer_rating, comment }) => (
+   {camper.reviews.map(({ reviewer_name, reviewer_rating, comment }) => (
      <ReviewsItem key={reviewer_name}>
        <ReviewsHeader>
          <Avatar>{reviewer_name[0].toUpperCase()}</Avatar>

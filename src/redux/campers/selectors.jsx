@@ -4,6 +4,8 @@ export const selectSelectedCamper = (state) => state.campers.campers.selectedCam
 
 export const selectFilterCampers = (state) => state.campers.filter;
 
+export const selectTotalCampers = (state) => state.campers.campers.total;
+
 export const selectFavoriteCampers = (state) => state.campers.campers.favorites;
 
 export const selectIsLoading = (state) => state.campers.campers.isLoading;
