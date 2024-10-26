@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 export const MainContent = styled.main`
+display: flex;
+flex-direction: row;
+gap: 64px;
   padding-top: 72px;
   min-height: calc(100vh - 72px);
 `;

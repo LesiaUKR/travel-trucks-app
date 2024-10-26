@@ -4,6 +4,7 @@ import { fetchCampers, fetchAllCampers, fetchCamperById } from "./operations";
 const initialState = {
    campers: {
      totalItems: 0,
+     currentPage: 1,
      items: [],
      selectedCamper: null,
      favorites:  JSON.parse(localStorage.getItem("favorites")) || [], // Отримуємо збережені обрані або пустий масив,
@@ -22,6 +23,9 @@ const campersSlice = createSlice({
    name: "campers",
   initialState,
   reducers: {
+    setPage(state, action) {
+      state.campers.currentPage = action.payload;
+   },
     setLocation(state, action) {
       state.filter.location = action.payload;
     },
@@ -53,7 +57,6 @@ const campersSlice = createSlice({
         if (action.meta.arg.page === 1) {
           state.campers.items = action.payload.items;
         } else {
-          // Додаємо нові елементи при натисканні "Load More"
           state.campers.items = [...state.campers.items, ...action.payload.items];
           console.log('Campers fetched successfully:', state.campers.items);
         }
@@ -71,8 +74,9 @@ const campersSlice = createSlice({
       .addCase(fetchAllCampers.fulfilled, (state, action) => {
         state.campers.isLoading = false;
         state.campers.error = null;
-        state.campers.items = action.payload;
-        console.log('Fetched campers:', action.payload);
+        state.campers.items = action.payload.items; // Зберігаємо тільки масив items
+        state.campers.total = action.payload.total; // Зберігаємо загальну кількість
+        console.log('fetchAllCampers successfully:', state.campers.items);
       })
       .addCase(fetchAllCampers.rejected, (state, action) => {
         state.campers.isLoading = false;
@@ -94,4 +98,4 @@ const campersSlice = createSlice({
 });
 
 export const campersReducer = campersSlice.reducer;
-export const { setLocation, setEquipment, setType, toggleFavorite  } = campersSlice.actions;
+export const { setLocation, setEquipment, setType, toggleFavorite, setPage  } = campersSlice.actions;

@@ -3,6 +3,8 @@ import { CardList } from "./ItemList.styled";
 
 
 const ItemList = ({ campers}) => {
+
+  console.log('campers ItemList', campers);
   return (
     <CardList>
       {campers.map((camper) => (

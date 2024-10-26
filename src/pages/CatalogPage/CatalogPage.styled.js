@@ -1,7 +1,15 @@
 import styled from "styled-components";
 
 export const CatalogMainContent = styled.main`
-
+display: flex;
+flex-direction: row;
+justify-content: center;   
+  align-items: flex-start;
+  max-width: 1440px;
+  margin: 0 auto;
+  gap: 64px;
+  padding-top: 72px;
+  min-height: calc(100vh - 72px);
 `
 export const AsideContainer = styled.div`
   padding-left: 64px;

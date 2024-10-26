@@ -11,18 +11,22 @@ import { FavoritesContainer, FavoritesSection } from "./FavoritesPage.styled";
 const FavoritesPage = () => {
   const dispatch = useDispatch();
   const campers = useSelector(selectCampers);
+  console.log('FavoritesPage campers', campers);
   const isLoading = useSelector(selectIsLoading);
   const favorites = useSelector(selectFavoriteCampers);
+console.log('FavoritesPage favorites', favorites);
+useEffect(() => {
+  if (campers.length === 0) {
+   const allCampers= dispatch(fetchAllCampers());
+   console.log('allCampers', allCampers);
+  }
+}, [dispatch, campers.length]);
 
-  useEffect(() => {
-    if (!campers.length) {
-      dispatch(fetchAllCampers());
-    }
-  }, [dispatch, campers.length]);
 
-  const camperItems = campers?.items || [];
-  const favoriteItems = camperItems.filter(camper => favorites.includes(camper.id));
+  const favoriteItems = campers.filter(camper => favorites.includes(camper.id));
  
+  console.log('favoriteItems', favoriteItems);
+
  return (<MainContent>
     <FavoritesSection>
       <FavoritesContainer>

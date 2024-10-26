@@ -17,6 +17,7 @@ export const darkTheme = {
    borderColorDefault: "#fff",
    inputBackground: "#F7F7F7",
    categoryBadgeBackground: "#F2F4F7",
+   headerBgColor: "#475467",
    bookFormBorder: "#DADDE1",
    camperFeaturesWrapperColor: "#6C717B",
  };

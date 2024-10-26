@@ -7,7 +7,7 @@ export const fetchAllCampers = createAsyncThunk(
    async (_, thunkAPI) => {
      try {
        const res = await axios.get(`${URL}/campers`);
-       return res.data;
+       return { items: res.data.items, total: res.data.total };
      } catch (error) {
       console.log("Error while fetching data:", error);
        return thunkAPI.rejectWithValue(error.message);
@@ -15,17 +15,6 @@ export const fetchAllCampers = createAsyncThunk(
    }
  );
 
-// export const fetchCampers = createAsyncThunk(
-//   "campers/fetchCampers",
-//   async (page = 1, thunkAPI) => {
-//     try {
-//       const res = await axios.get(`${URL}/campers?page=${page}&limit=4`);
-//       return res.data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
 export const fetchCampers = createAsyncThunk(
   "campers/fetchCampers",
   async ({ page, filters,  limit = 4 }, thunkAPI) => {
@@ -33,7 +22,7 @@ export const fetchCampers = createAsyncThunk(
       const res = await axios.get(`${URL}/campers`, {
         params: { page, limit, ...filters },
       });
-      return { items: res.data.items, total: res.data.total }; // Припустимо, що `total` повертає загальну кількість
+      return { items: res.data.items, total: res.data.total };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
