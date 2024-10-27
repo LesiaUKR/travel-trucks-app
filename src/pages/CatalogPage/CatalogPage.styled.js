@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const CatalogMainContent = styled.main`
+width: 100%;
 display: flex;
 flex-direction: row;
 justify-content: center;   
@@ -18,6 +19,11 @@ export const AsideContainer = styled.div`
 
 export const CatalogSection = styled.section`
   padding: 48px 0px 52px 0px;
+  min-width: 888px;
+  min-height: 752px;
+  
+  text-align: center;
+
 `;
 
 export const CatalogContainer = styled.div`
@@ -25,8 +31,16 @@ export const CatalogContainer = styled.div`
   flex-direction: row;
   gap: 64px;
   justify-content: center;
+  align-items: center;
 
   max-width: 1440px;
   padding-right: 64px;
   margin: 0 auto;
+`;
+
+export const NoItemsFound = styled.h2`
+  color: ${({ theme }) => theme.textColorFirst};
+  font-size: 24px;
+  font-weight: 500;
+  margin-top: 100px;
 `;

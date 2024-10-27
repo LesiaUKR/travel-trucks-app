@@ -112,13 +112,7 @@ export const VehicleFilters = styled.ul`
     transition: outline 0.3s ease;
   }
 
-  .filterWrap:hover {
-    outline: 1px solid ${({ theme }) => theme.buttonColor};
-  }
-  .filterCheckbox.hidden {
-    display: none;
-  }
-
+ 
   .labelText {
     margin-top: 9px;
     color: ${({ theme }) => theme.textColorPrimary};
@@ -131,3 +125,63 @@ export const VehicleFilters = styled.ul`
     line-height: 1.25;
   }
 `;
+
+export const EquipmentFilterItem = styled.li`
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 0px;
+
+    width: 113px;
+    height: 95px;
+
+    border-radius: 10px;
+    border: none;
+    outline: 1px solid ${({ theme }) => theme.borderColorDefault};
+    transition: outline 0.3s ease;
+
+
+  &:hover {
+    outline: 1px solid ${({ theme }) => theme.buttonColor};
+  }
+  .filterCheckbox.hidden {
+    position: absolute;
+    opacity: 0;
+  }
+
+  &.active {
+    outline: 1px solid ${({ theme }) => theme.buttonColor};
+}
+`
+
+export const VanTypeFilterItem = styled.li`
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 0px;
+
+    width: 113px;
+    height: 95px;
+
+    border-radius: 10px;
+    border: none;
+    outline: 1px solid ${({ theme }) => theme.borderColorDefault};
+    transition: outline 0.3s ease;
+  
+  
+&:hover {
+    outline: 1px solid ${({ theme }) => theme.buttonColor};
+  }
+  .filterRadioBtn.hidden {
+    position: absolute;
+    opacity: 0;
+  }
+
+  &.active {
+    outline: 1px solid ${({ theme }) => theme.buttonColor};
+}
+`

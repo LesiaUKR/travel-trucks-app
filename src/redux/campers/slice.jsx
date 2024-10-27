@@ -14,7 +14,7 @@ const initialState = {
    filter: {
      location: "",
      equipment: "",
-     type: "",
+     form: "",
    },
  };
 
@@ -35,6 +35,9 @@ const campersSlice = createSlice({
     setType(state, action) {
       state.filter.type = action.payload;
     },
+    setFilters(state, action) {
+      state.filter = action.payload;  // Update all filters at once
+    },
     toggleFavorite: (state, action) => {
       const camperId = action.payload;
       if (state.campers.favorites.includes(camperId)) {
@@ -43,6 +46,9 @@ const campersSlice = createSlice({
         state.campers.favorites.push(camperId);
       }
       localStorage.setItem("favorites", JSON.stringify(state.campers.favorites)); // Зберігаємо в localStorage
+    },
+    clearItems(state) {
+      state.campers.items = []; // Очищення результатів
     },
   },
   extraReducers: (builder) => {
@@ -53,14 +59,17 @@ const campersSlice = createSlice({
       .addCase(fetchCampers.fulfilled, (state, action) => {
         state.campers.isLoading = false;
         state.campers.error = null;
-        console.log('action.payload', action.payload);
-        if (action.meta.arg.page === 1) {
-          state.campers.items = action.payload.items;
-        } else {
-          state.campers.items = [...state.campers.items, ...action.payload.items];
-          console.log('Campers fetched successfully:', state.campers.items);
-        }
-        
+        const page = action.meta.arg.page || 1; // Завжди має бути хоча б 1
+  console.log('action.payload', action.payload);
+  console.log("page", page);
+  if (page === 1) {
+    state.campers.items = action.payload.items;
+    console.log('Заміна items для сторінки 1');
+  } else {
+    console.log("page", page);
+    state.campers.items = [...state.campers.items, ...action.payload.items];
+    console.log('Додавання нових елементів для інших сторінок');
+  }
         state.campers.total = action.payload.total;
         console.log('Total campers:', state.campers.total);
       })
@@ -98,4 +107,4 @@ const campersSlice = createSlice({
 });
 
 export const campersReducer = campersSlice.reducer;
-export const { setLocation, setEquipment, setType, toggleFavorite, setPage  } = campersSlice.actions;
+export const { setLocation, setEquipment, setType, toggleFavorite, setPage, clearItems,setFilters  } = campersSlice.actions;

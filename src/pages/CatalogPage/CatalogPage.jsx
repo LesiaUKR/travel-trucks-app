@@ -13,12 +13,13 @@ import {
   CatalogContainer,
   CatalogMainContent,
   CatalogSection,
+  NoItemsFound,
 } from "./CatalogPage.styled";
 import FilterBar from "../../components/FilterBar/FilterBar";
 import ItemList from "../../components/ItemList/ItemList";
 import Loader from "../../components/Loader/Loader";
 import DefaultBtn from "../../components/DefaultBtn/DefaultBtn";
-import { setPage } from "../../redux/campers/slice";
+import { clearItems, setPage } from "../../redux/campers/slice";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -29,8 +30,10 @@ const CatalogPage = () => {
   const currentPage = useSelector(selectCurrentPage);
 
   useEffect(() => {
-    dispatch(fetchCampers({ page: currentPage, filters }));
- }, [dispatch, filters, currentPage]);
+    dispatch(setPage(1)); 
+    dispatch(clearItems());
+    dispatch(fetchCampers({ page: 1, filters }));
+  }, [dispatch, filters]);
 
   const hasMoreItems = campers.length < totalCampers;
 
@@ -38,7 +41,7 @@ const CatalogPage = () => {
     const nextPage = currentPage + 1;
     dispatch(setPage(nextPage));
     dispatch(fetchCampers({ page: nextPage, filters }));
- };
+  };
 
   return (
     <CatalogMainContent>
@@ -48,9 +51,16 @@ const CatalogPage = () => {
       <CatalogSection>
         <CatalogContainer>
           <div>
-            {isLoading ? <Loader /> : <ItemList campers={campers} />}
-
-            {hasMoreItems && !isLoading && (
+          {isLoading ? (
+              <Loader />
+            ) : campers.length > 0 ? (
+              <ItemList campers={campers} />
+            ) : (
+              <NoItemsFound>
+                No items found based on your filters
+                </NoItemsFound>
+            )}
+            {hasMoreItems && !isLoading && campers.length > 0 && (
               <DefaultBtn
                 text="Load More"
                 type="button"

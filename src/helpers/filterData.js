@@ -1,13 +1,24 @@
 export const vehicleEquipmentFilters = [
-  { icon: "ac", text: "AC" },
-   { icon: "transmission", text: "Automatic" },
-   { icon: "kitchen", text: "Kitchen" },
-   { icon: "tv", text: "TV" },
-   { icon: "bathroom", text: "Bathroom"},
+  { key: "AC", icon: "ac", text: "AC" },
+  { key: "transmission", icon: "transmission", text: "Automatic" },
+  { key: "kitchen", icon: "kitchen", text: "Kitchen" },
+  { key: "TV", icon: "tv", text: "TV" },
+  { key: "bathroom", icon: "bathroom", text: "Bathroom"},
  ];
+
  
  export const vehicleTypeFilters = [
-   { icon: "van", text: "Van" },
-   { icon: "fully-integrated", text: "Fully Integrated" },
-   { icon: "alcove", text: "Alcove" },
+   { key:"form", value: "panelTruck", icon: "van", text: "Van" },
+   { key:"form", value: "fullyIntegrated", icon: "fully-integrated", text: "Fully Integrated" },
+   { key:"form", value: "alcove", icon: "alcove", text: "Alcove" },
  ];
+
+ export const locationsList = [
+  "Ukraine, Kyiv",
+  "Ukraine, Lviv",
+  "Ukraine, Dnipro",
+  "Ukraine, Odesa",
+  "Ukraine, Sumy",
+  "Ukraine, Kharkiv",
+  "Ukraine, Poltava"
+];

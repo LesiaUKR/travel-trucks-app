@@ -27,7 +27,7 @@ const ItemCard = ({ advert }) => {
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavoriteCampers);
   const isFavorite = favorites.includes(id);
-console.log('favorites:', favorites);
+
 
   const handleToggleFavorite = () => {
     dispatch(toggleFavorite(id));
