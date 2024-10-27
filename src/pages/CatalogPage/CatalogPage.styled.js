@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import DefaultBtn from "../../components/DefaultBtn/DefaultBtn";
 
 export const CatalogMainContent = styled.main`
 width: 100%;
@@ -43,4 +44,16 @@ export const NoItemsFound = styled.h2`
   font-size: 24px;
   font-weight: 500;
   margin-top: 100px;
+`;
+
+export const LoadMoreBtn = styled(DefaultBtn)`
+margin-top: 40px;
+  border: 1px solid ${({ theme }) => theme.loadMoreBtnBorder};
+  background-color: ${({ theme }) => theme.loadMoreBgColor};
+  color: ${({ theme }) => theme.loadMoreBtnText};
+
+  &:hover {
+    border-color: ${({ theme }) => theme.loadMoreBtnBorderHover};
+    background-color: ${({ theme }) => theme.loadMoreBgColor};
+  }
 `;

@@ -1,13 +1,20 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';   
 
+export const DetailsMainContent = styled.main`
+  padding-top: 72px;
+`
 
 export const DetailsSection = styled.section`
+  padding: 48px 0px;
 `
 export const DetailsContainer = styled.div`
 max-width: 1440px;
-padding: 0px 64px 0px 64px;
-margin: 0 auto;
+  width: 100%;
+  padding: 0px 64px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 `
 
 export const CamperTitle = styled.h2`

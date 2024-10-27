@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
 export const BookForm = styled.form`
-
-width: 641px;
+max-width: 640px; 
 padding: 44px;
 
 border: none;
 border-radius: 10px;
-outline: 1px solid ${({ theme }) => theme.bookFormBorder};
+border: 1px solid ${({ theme }) => theme.bookFormBorder};
 
 .bookFormBtn {
     display: block;

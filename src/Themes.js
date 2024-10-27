@@ -20,6 +20,10 @@ export const darkTheme = {
    headerBgColor: "#475467",
    bookFormBorder: "#DADDE1",
    camperFeaturesWrapperColor: "#6C717B",
+   loadMoreBtnText: "#101828",
+   loadMoreBtnBorder: "#DADDE1",
+   loadMoreBtnBorderHover: "#D84343",
+   loadMoreBgColor: "#fff",
  };
  export const lightTheme = {
    body: "#fff",
@@ -43,5 +47,9 @@ export const darkTheme = {
    headerBgColor: "#F7F7F7",
    bookFormBorder: "#DADDE1",
    camperFeaturesWrapperColor: "#F7F7F7",
+   loadMoreBtnText: "#101828",
+   loadMoreBtnBorder: "#DADDE1",
+   loadMoreBtnBorderHover: "#D84343",
+   loadMoreBgColor: "#fff",
  };
  

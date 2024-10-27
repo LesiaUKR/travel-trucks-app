@@ -1,5 +1,4 @@
 import { Outlet, useParams } from "react-router-dom";
-import { MainContent } from "../../components/SharedLayout/SharedLayout.styled";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectError,
@@ -19,6 +18,7 @@ import {
   CamperImagesList,
   CamperImagesItem,
   CamperImage,
+  DetailsMainContent,
 } from "./CamperDetailsPage.styled";
 import BookCamperForm from "./../../components/BookCamperForm/BookCamperForm";
 import { useEffect } from "react";
@@ -49,7 +49,7 @@ export default function CamperDetailsPage() {
    const isFeaturesActive = location.pathname === `/catalog/${id}` || location.pathname === `/catalog/${id}/features`;
 
   return (
-    <MainContent>
+    <DetailsMainContent>
       <DetailsSection>
         <DetailsContainer>
           <CamperTitle>{name}</CamperTitle>
@@ -93,6 +93,6 @@ export default function CamperDetailsPage() {
           </DetailsWrapper>
         </DetailsContainer>
       </DetailsSection>
-    </MainContent>
+    </DetailsMainContent>
   );
 }

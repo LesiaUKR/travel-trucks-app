@@ -13,12 +13,12 @@ import {
   CatalogContainer,
   CatalogMainContent,
   CatalogSection,
+  LoadMoreBtn,
   NoItemsFound,
 } from "./CatalogPage.styled";
 import FilterBar from "../../components/FilterBar/FilterBar";
 import ItemList from "../../components/ItemList/ItemList";
 import Loader from "../../components/Loader/Loader";
-import DefaultBtn from "../../components/DefaultBtn/DefaultBtn";
 import { clearItems, setPage } from "../../redux/campers/slice";
 
 const CatalogPage = () => {
@@ -61,7 +61,7 @@ const CatalogPage = () => {
                 </NoItemsFound>
             )}
             {hasMoreItems && !isLoading && campers.length > 0 && (
-              <DefaultBtn
+              <LoadMoreBtn
                 text="Load More"
                 type="button"
                 onClick={handleLoadMore}

@@ -3,8 +3,10 @@ import Icon from "../Icon/Icon";
 import { useTheme } from "styled-components";
 import DefaultBtn from "../DefaultBtn/DefaultBtn";
 import {
+  ButtonsWrapper,
   EquipmentFilterItem,
   Form,
+  ResetBtn,
   VanTypeFilterItem,
   VehicleFilters,
 } from "./FiltersForm.styled";
@@ -194,14 +196,15 @@ const FiltersForm = () => {
           </VehicleFilters>
         </div>
       </div>
+      <ButtonsWrapper>
       <DefaultBtn type="submit" text="Search" className="filter-btn" />
       {filtersActive && (
-        <DefaultBtn
+        <ResetBtn
           type="button"
           text="Reset"
           onClick={handleReset}
         />
-      )}
+      )}</ButtonsWrapper>
     </Form>
   );
 };

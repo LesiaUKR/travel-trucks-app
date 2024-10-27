@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import DefaultBtn from "../DefaultBtn/DefaultBtn";
 
 export const Form = styled.form`
   width: 360px;
@@ -33,6 +34,7 @@ export const Form = styled.form`
     font-size: 16px;
     font-weight: 400;
     line-height: 1, 25;
+    cursor: pointer;
 
     &::placeholder {
       color: #6C717B;
@@ -136,6 +138,7 @@ export const EquipmentFilterItem = styled.li`
 
     width: 113px;
     height: 95px;
+    cursor: pointer;
 
     border-radius: 10px;
     border: none;
@@ -166,12 +169,14 @@ export const VanTypeFilterItem = styled.li`
 
     width: 113px;
     height: 95px;
+    cursor: pointer;
 
     border-radius: 10px;
     border: none;
     outline: 1px solid ${({ theme }) => theme.borderColorDefault};
     transition: outline 0.3s ease;
-  
+ 
+
   
 &:hover {
     outline: 1px solid ${({ theme }) => theme.buttonColor};
@@ -185,3 +190,20 @@ export const VanTypeFilterItem = styled.li`
     outline: 1px solid ${({ theme }) => theme.buttonColor};
 }
 `
+
+export const ButtonsWrapper = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+`
+
+export const ResetBtn = styled(DefaultBtn)`
+  border: 1px solid ${({ theme }) => theme.loadMoreBtnBorder};
+  background-color: ${({ theme }) => theme.loadMoreBgColor};
+  color: ${({ theme }) => theme.loadMoreBtnText};
+
+  &:hover {
+    border-color: ${({ theme }) => theme.loadMoreBtnBorderHover};
+    background-color: ${({ theme }) => theme.loadMoreBgColor};
+  }
+`;
