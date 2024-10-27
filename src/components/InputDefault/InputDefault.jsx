@@ -1,4 +1,3 @@
-import React from 'react';
 import { Input, Textarea } from './InputDefault.styled';
 
 export default function InputDefault ({
@@ -12,9 +11,15 @@ export default function InputDefault ({
    onChange,
  }) {
 
-  if (type === 'textarea') {
+  if (type === "textarea") {
     return (
-      <Textarea className={className} placeholder={placeholder}></Textarea>
+      <Textarea
+        placeholder={placeholder}
+        name={name}
+        value={value}
+        onChange={onChange}
+        className={className}
+      />
     );
   }
 

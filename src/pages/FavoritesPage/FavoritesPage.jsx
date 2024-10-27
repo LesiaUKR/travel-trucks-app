@@ -19,8 +19,7 @@ const FavoritesPage = () => {
 
   useEffect(() => {
     if (campers.length === 0) {
-      const allCampers = dispatch(fetchAllCampers());
-      console.log("allCampers", allCampers);
+  dispatch(fetchAllCampers());
     }
   }, [dispatch, campers.length]);
 
