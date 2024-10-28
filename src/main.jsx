@@ -8,8 +8,7 @@ import { darkTheme, lightTheme } from "./Themes";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { DatePickerStyles } from "./components/InputDatePicker/InputDatePicker.styled";
-
-
+import { HelmetProvider } from "react-helmet-async";
 
 const Index = () => {
   const [themeMode, setThemeMode] = useState("light");
@@ -22,10 +21,12 @@ const Index = () => {
     <React.StrictMode>
       <ThemeProvider theme={themeMode === "light" ? lightTheme : darkTheme}>
         <BrowserRouter basename="/">
-        <DatePickerStyles />
+          <DatePickerStyles />
           <GlobalStyle />
- <Provider store={store}>
-          <App toggleTheme={toggleTheme} />
+          <Provider store={store}>
+            <HelmetProvider>
+              <App toggleTheme={toggleTheme} />
+            </HelmetProvider>
           </Provider>
         </BrowserRouter>
       </ThemeProvider>

@@ -20,6 +20,7 @@ import FilterBar from "../../components/FilterBar/FilterBar";
 import ItemList from "../../components/ItemList/ItemList";
 import Loader from "../../components/Loader/Loader";
 import { clearItems, setPage } from "../../redux/campers/slice";
+import { Helmet } from "react-helmet-async";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -45,6 +46,10 @@ const CatalogPage = () => {
 
   return (
     <CatalogMainContent>
+           <Helmet>
+        <title>Home Page - Мій сайт</title>
+        <meta name="description" content="Look through catalof of travel trucks" />
+      </Helmet>
       <AsideContainer>
         <FilterBar />
       </AsideContainer>

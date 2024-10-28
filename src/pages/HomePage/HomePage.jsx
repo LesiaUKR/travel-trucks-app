@@ -14,7 +14,6 @@ const HomePage = () => {
           <HeroText>You can find everything you want in our catalog</HeroText>
           <HeroLink to="/catalog">View Now</HeroLink>
         </HeroContainer>
-      ;
     </HomeMainContent>
   );
 };
