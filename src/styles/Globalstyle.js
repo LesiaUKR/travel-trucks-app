@@ -4,7 +4,7 @@ import "modern-normalize";
 export const GlobalStyle = createGlobalStyle`
 
 :root {
-    --color1: ${({ theme }) => theme.iconLogoColorFirst};
+    --color1: ${({ theme }) => theme.iconLogoColorSecond};
     --color2: ${({ theme }) => theme.iconLogoColorFirst};
   }
 

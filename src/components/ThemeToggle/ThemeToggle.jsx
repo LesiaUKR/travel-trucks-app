@@ -1,12 +1,14 @@
 import { useState } from "react";
+import { useTheme } from "styled-components";
+
+import Icon from "../Icon/Icon";
+
 import {
   StyledSwitchInput,
   ThemeWrapper,
   ToggleSwitchLabel,
   ToggleSwitchSpan,
 } from "./ThemeToggle.styled";
-import { useTheme } from "styled-components";
-import Icon from "../Icon/Icon";
 
 function ThemeToggle({ toggleTheme }) {
   const theme = useTheme();
@@ -19,8 +21,7 @@ function ThemeToggle({ toggleTheme }) {
 
   return (
     <ThemeWrapper>
-      <Icon name="sun"  width = "20"
-  height = "20"/>
+      <Icon name="sun" width="20" height="20" stroke="#ffa500" fill="#ffff00" />
       <ToggleSwitchLabel>
         <StyledSwitchInput
           type="checkbox"
@@ -29,8 +30,13 @@ function ThemeToggle({ toggleTheme }) {
         />
         <ToggleSwitchSpan />
       </ToggleSwitchLabel>
-      <Icon name="moon" stroke={theme.iconColorFirst} fill={theme.iconColorFirst} width = "20"
-  height = "20" />
+      <Icon
+        name="moon"
+        stroke={theme.iconColorFirst}
+        fill={theme.iconColorFirst}
+        width="20"
+        height="20"
+      />
     </ThemeWrapper>
   );
 }

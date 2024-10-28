@@ -35,9 +35,9 @@ export const HeaderContainer = styled.div`
 export const LogoWrapper = styled.div`
   margin-right: 450px;
 
-  svg {
+  /* svg {
     fill: ${({ theme }) => theme.iconLogoColorSecond};
-  }
+  } */
 `;
 
 export const NavWrapper = styled.nav`
