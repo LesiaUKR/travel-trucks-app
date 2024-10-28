@@ -44,68 +44,68 @@ export default function CamperDetailsPage() {
     dispatch(fetchCamperById(id));
   }, [dispatch, id]);
 
+    if (isLoading || !camper) {
+      return (
+        <LoaderWrapper>
+          <Loader />
+        </LoaderWrapper>
+      );
+    }
+  
+    if (error) return <p>Error: {error}</p>;
+
   const { name, rating, reviews, location, price, description, gallery } =
     camper;
 
   const isFeaturesActive =
     pathname === `/catalog/${id}` || pathname === `/catalog/${id}/features`;
 
-  return (
-    <DetailsMainContent>
-      <DetailsSection>
-        <DetailsContainer>
-          {isLoading || !camper ? (
-            <LoaderWrapper>
-              <Loader />
-            </LoaderWrapper>
-          ) : error ? (
-            <p>Error: {error}</p>
-          ) : (
-            <>
-              <CamperTitle>{name}</CamperTitle>
-              <ReviewLocationWrapper>
-                <ReviewBox rating={rating} reviews={reviews} id={id} />
-                <LocationBox location={location} />
-              </ReviewLocationWrapper>
-              <CamperPrice className="card-price">
-                {formattedPrice(price)}
-              </CamperPrice>
-
-              <CamperImagesList>
-                {gallery.map(({ thumb }, index) => (
-                  <CamperImagesItem key={index}>
-                    <CamperImage src={thumb} alt={name} />
-                  </CamperImagesItem>
-                ))}
-              </CamperImagesList>
-              <CamperDescription>{description}</CamperDescription>
-
-              <DetailsTabsList>
-                <li>
-                  <DetailsTabsLink
-                    to="features"
-                    className={isFeaturesActive ? "active" : ""}
-                  >
-                    Features
-                  </DetailsTabsLink>
-                </li>
-                <li>
-                  <DetailsTabsLink
-                    to="reviews"
-                    className={({ isActive }) => (isActive ? "active" : "")}
-                  >
-                    Reviews
-                  </DetailsTabsLink>
-                </li>
-              </DetailsTabsList>
-              <DetailsWrapper>
-                <Outlet context={{ camper }} />
-                <BookCamperForm />
-              </DetailsWrapper>
-            </>
-          )}
-        </DetailsContainer>
-      </DetailsSection>
-    </DetailsMainContent>
-  );
-}
+    return (
+      <DetailsMainContent>
+        <DetailsSection>
+          <DetailsContainer>
+            <CamperTitle>{name}</CamperTitle>
+            <ReviewLocationWrapper>
+              <ReviewBox rating={rating} reviews={reviews} id={id} />
+              <LocationBox location={location} />
+            </ReviewLocationWrapper>
+            <CamperPrice className="card-price">
+              {formattedPrice(price)}
+            </CamperPrice>
+  
+            <CamperImagesList>
+              {gallery.map(({ thumb }, index) => (
+                <CamperImagesItem key={index}>
+                  <CamperImage src={thumb} alt={name} />
+                </CamperImagesItem>
+              ))}
+            </CamperImagesList>
+            <CamperDescription>{description}</CamperDescription>
+  
+            <DetailsTabsList>
+              <li>
+                <DetailsTabsLink
+                  to="features"
+                  className={isFeaturesActive ? "active" : ""}
+                >
+                  Features
+                </DetailsTabsLink>
+              </li>
+              <li>
+                <DetailsTabsLink
+                  to="reviews"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Reviews
+                </DetailsTabsLink>
+              </li>
+            </DetailsTabsList>
+            <DetailsWrapper>
+              <Outlet context={{ camper }} />
+              <BookCamperForm />
+            </DetailsWrapper>
+          </DetailsContainer>
+        </DetailsSection>
+      </DetailsMainContent>
+    );
+  }

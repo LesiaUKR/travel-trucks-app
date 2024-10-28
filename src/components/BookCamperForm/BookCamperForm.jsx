@@ -41,8 +41,6 @@ export default function BookCamperForm() {
     return newErrors;
   };
 
-  console.log("formData", formData);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const validationErrors = validate();

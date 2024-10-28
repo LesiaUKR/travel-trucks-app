@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { URL } from "../../services/apiService";
+import { URL } from "@/services/apiService";
 
 export const fetchAllCampers = createAsyncThunk(
    "campers/fetchAllCampers",

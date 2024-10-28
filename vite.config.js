@@ -15,6 +15,7 @@ export default defineConfig({
       "@redux": "/src/redux",
       "@styles": "/src/styles",
       "@helpers": "/src/helpers",
+      "@services": "/src/services",
     },
   },
 })
