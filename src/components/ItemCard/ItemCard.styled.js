@@ -85,7 +85,7 @@ export const CardDescription = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: normal;
-
+  text-align: left;  
   color: ${({ theme }) => theme.textColorSecondary};
 
   font-size: 16px;

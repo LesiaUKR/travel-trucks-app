@@ -1,10 +1,11 @@
-import { Outlet, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { Outlet, useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectError,
-  selectIsLoading,
-  selectSelectedCamper,
-} from "../../redux/campers/selectors";
+
+import BookCamperForm from "@/components/BookCamperForm/BookCamperForm";
+import ReviewBox from "@/components/ReviewBox/ReviewBox";
+import LocationBox from "@/components/LocationBox/LocationBox";
+import Loader from "@/components/Loader/Loader";
 import {
   DetailsContainer,
   DetailsWrapper,
@@ -19,78 +20,90 @@ import {
   CamperImagesItem,
   CamperImage,
   DetailsMainContent,
+  LoaderWrapper,
 } from "./CamperDetailsPage.styled";
-import BookCamperForm from "./../../components/BookCamperForm/BookCamperForm";
-import { useEffect } from "react";
-import { fetchCamperById } from "../../redux/campers/operations";
-import ReviewBox from "../../components/ReviewBox/ReviewBox";
-import LocationBox from "../../components/LocationBox/LocationBox";
-import { formattedPrice } from "../../helpers/formattedPrice";
+
+import { formattedPrice } from "@/helpers/formattedPrice";
+import { fetchCamperById } from "@/redux/campers/operations";
+import {
+  selectError,
+  selectIsLoading,
+  selectSelectedCamper,
+} from "@/redux/campers/selectors";
 
 export default function CamperDetailsPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
 
   const camper = useSelector(selectSelectedCamper);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
-
   useEffect(() => {
     dispatch(fetchCamperById(id));
   }, [dispatch, id]);
 
-  if (isLoading) return <p>Loading camper details...</p>;
-  if (error) return <p>Error: {error}</p>;
-  if (!camper) return <p>Loading camper details...</p>;
+  const { name, rating, reviews, location, price, description, gallery } =
+    camper;
 
-  const { name, rating, reviews, location, price, description, gallery } = camper;
-
-   const isFeaturesActive = location.pathname === `/catalog/${id}` || location.pathname === `/catalog/${id}/features`;
+  const isFeaturesActive =
+    pathname === `/catalog/${id}` || pathname === `/catalog/${id}/features`;
 
   return (
     <DetailsMainContent>
       <DetailsSection>
         <DetailsContainer>
-          <CamperTitle>{name}</CamperTitle>
-          <ReviewLocationWrapper>
-        <ReviewBox rating={rating} reviews={reviews} id={id}/>
-        <LocationBox location={location} />
-        </ReviewLocationWrapper>
-        <CamperPrice className="card-price">{formattedPrice(price)}</CamperPrice>
-          
-          <CamperImagesList>
-{gallery.map(({thumb}, index) => (
-  <CamperImagesItem key={index}>
-    <CamperImage src={thumb} alt={name} />
-  </CamperImagesItem>
-))}
+          {isLoading || !camper ? (
+            <LoaderWrapper>
+              <Loader />
+            </LoaderWrapper>
+          ) : error ? (
+            <p>Error: {error}</p>
+          ) : (
+            <>
+              <CamperTitle>{name}</CamperTitle>
+              <ReviewLocationWrapper>
+                <ReviewBox rating={rating} reviews={reviews} id={id} />
+                <LocationBox location={location} />
+              </ReviewLocationWrapper>
+              <CamperPrice className="card-price">
+                {formattedPrice(price)}
+              </CamperPrice>
 
-          </CamperImagesList>
-        <CamperDescription>{description}</CamperDescription>
-          
-          <DetailsTabsList>
-            <li>
-              <DetailsTabsLink
-                to="features"
-                className={isFeaturesActive ? "active" : ""}
-              >
-                Features
-              </DetailsTabsLink>
-            </li>
-            <li>
-              <DetailsTabsLink
-                to="reviews"
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                Reviews
-              </DetailsTabsLink>
-            </li>
-          </DetailsTabsList>
-          <DetailsWrapper>
-          <Outlet context={{ camper }} />
-            <BookCamperForm />
-          </DetailsWrapper>
+              <CamperImagesList>
+                {gallery.map(({ thumb }, index) => (
+                  <CamperImagesItem key={index}>
+                    <CamperImage src={thumb} alt={name} />
+                  </CamperImagesItem>
+                ))}
+              </CamperImagesList>
+              <CamperDescription>{description}</CamperDescription>
+
+              <DetailsTabsList>
+                <li>
+                  <DetailsTabsLink
+                    to="features"
+                    className={isFeaturesActive ? "active" : ""}
+                  >
+                    Features
+                  </DetailsTabsLink>
+                </li>
+                <li>
+                  <DetailsTabsLink
+                    to="reviews"
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                  >
+                    Reviews
+                  </DetailsTabsLink>
+                </li>
+              </DetailsTabsList>
+              <DetailsWrapper>
+                <Outlet context={{ camper }} />
+                <BookCamperForm />
+              </DetailsWrapper>
+            </>
+          )}
         </DetailsContainer>
       </DetailsSection>
     </DetailsMainContent>
