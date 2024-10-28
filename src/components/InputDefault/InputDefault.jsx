@@ -1,16 +1,15 @@
-import { Input, Textarea } from './InputDefault.styled';
+import { Input, Textarea } from "./InputDefault.styled";
 
-export default function InputDefault ({
-   className,
-   type,
-   name,
-   placeholder,
-   onFocus,
-   onBlur,
-   value,
-   onChange,
- }) {
-
+export default function InputDefault({
+  className,
+  type,
+  name,
+  placeholder,
+  onFocus,
+  onBlur,
+  value,
+  onChange,
+}) {
   if (type === "textarea") {
     return (
       <Textarea
@@ -24,17 +23,17 @@ export default function InputDefault ({
   }
 
   return (
-       <>
-          <Input
-            className={className}
-            type={type}
-            name={name}
-            placeholder={placeholder}
-            value={value}
-            onChange={onChange}
-            onFocus={onFocus}
-            onBlur={onBlur}
-          />
-        </>
-  )
+    <>
+      <Input
+        className={className}
+        type={type}
+        name={name}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        onFocus={onFocus}
+        onBlur={onBlur}
+      />
+    </>
+  );
 }

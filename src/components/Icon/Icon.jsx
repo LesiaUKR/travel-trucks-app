@@ -1,14 +1,13 @@
+import Icons from "/icons/sprite.svg";
 
-import Icons from "/icons/sprite.svg"
-
-const Icon = ({
+export default function Icon({
   name,
   width = "100%",
   height = "100%",
   fill,
   stroke,
   style,
-}) => {
+}) {
   return (
     <svg
       width={width}
@@ -20,6 +19,4 @@ const Icon = ({
       <use xlinkHref={`${Icons}#icon-${name}`} />
     </svg>
   );
-};
-
-export default Icon;
+}

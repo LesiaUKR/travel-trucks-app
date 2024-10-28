@@ -1,8 +1,10 @@
+import { useOutletContext } from "react-router-dom";
+
 import CategoryList from "../CategoryList/CategoryList";
 import VehicleDetails from "../VehicleDetails/VehicleDetails";
-import { getCategories } from '../../helpers/categoryList';
 import { FeaturesWrapper } from "./Features.styled";
-import { useOutletContext } from "react-router-dom";
+
+import { getCategories } from '@/helpers/categoryList';
 
 export default function Features() {
   const { camper } = useOutletContext();

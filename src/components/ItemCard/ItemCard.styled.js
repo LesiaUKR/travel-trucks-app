@@ -85,7 +85,7 @@ export const CardDescription = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: normal;
-  text-align: left;  
+  text-align: left;
   color: ${({ theme }) => theme.textColorSecondary};
 
   font-size: 16px;
@@ -93,7 +93,3 @@ export const CardDescription = styled.p`
   font-weight: 400;
   line-height: 1.5;
 `;
-
-
-
-

@@ -1,13 +1,10 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectCampers,
-  selectCurrentPage,
-  selectFilterCampers,
-  selectIsLoading,
-  selectTotalCampers,
-} from "../../redux/campers/selectors";
-import { useEffect} from "react";
-import { fetchCampers } from "../../redux/campers/operations";
+import { Helmet } from "react-helmet-async";
+
+import FilterBar from "@/components/FilterBar/FilterBar";
+import ItemList from "@/components/ItemList/ItemList";
+import Loader from "@/components/Loader/Loader";
 import {
   AsideContainer,
   CatalogContainer,
@@ -16,13 +13,18 @@ import {
   LoadMoreBtn,
   NoItemsFound,
 } from "./CatalogPage.styled";
-import FilterBar from "../../components/FilterBar/FilterBar";
-import ItemList from "../../components/ItemList/ItemList";
-import Loader from "../../components/Loader/Loader";
-import { clearItems, setPage } from "../../redux/campers/slice";
-import { Helmet } from "react-helmet-async";
 
-const CatalogPage = () => {
+import { clearItems, setPage } from "@/redux/campers/slice";
+import { fetchCampers } from "@/redux/campers/operations";
+import {
+  selectCampers,
+  selectCurrentPage,
+  selectFilterCampers,
+  selectIsLoading,
+  selectTotalCampers,
+} from "@/redux/campers/selectors";
+
+export default function CatalogPage() {
   const dispatch = useDispatch();
   const filters = useSelector(selectFilterCampers);
   const campers = useSelector(selectCampers);
@@ -31,7 +33,7 @@ const CatalogPage = () => {
   const currentPage = useSelector(selectCurrentPage);
 
   useEffect(() => {
-    dispatch(setPage(1)); 
+    dispatch(setPage(1));
     dispatch(clearItems());
     dispatch(fetchCampers({ page: 1, filters }));
   }, [dispatch, filters]);
@@ -46,9 +48,12 @@ const CatalogPage = () => {
 
   return (
     <CatalogMainContent>
-           <Helmet>
+      <Helmet>
         <title>Travel Trucks Catalog Page</title>
-        <meta name="description" content="Look through catalog of the travel trucks" />
+        <meta
+          name="description"
+          content="Look through catalog of the travel trucks"
+        />
       </Helmet>
       <AsideContainer>
         <FilterBar />
@@ -56,14 +61,12 @@ const CatalogPage = () => {
       <CatalogSection>
         <CatalogContainer>
           <div>
-          {isLoading ? (
+            {isLoading ? (
               <Loader />
             ) : campers.length > 0 ? (
               <ItemList campers={campers} />
             ) : (
-              <NoItemsFound>
-                No items found based on your filters
-                </NoItemsFound>
+              <NoItemsFound>No items found based on your filters</NoItemsFound>
             )}
             {hasMoreItems && !isLoading && campers.length > 0 && (
               <LoadMoreBtn
@@ -77,6 +80,4 @@ const CatalogPage = () => {
       </CatalogSection>
     </CatalogMainContent>
   );
-};
-
-export default CatalogPage;
+}

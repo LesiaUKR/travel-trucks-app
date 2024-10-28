@@ -1,6 +1,8 @@
 import { useState } from "react";
-import Icon from "../Icon/Icon";
+import { useDispatch } from "react-redux";
 import { useTheme } from "styled-components";
+
+import Icon from "../Icon/Icon";
 import DefaultBtn from "../DefaultBtn/DefaultBtn";
 import {
   ButtonsWrapper,
@@ -10,17 +12,17 @@ import {
   VanTypeFilterItem,
   VehicleFilters,
 } from "./FiltersForm.styled";
+
 import {
   vehicleEquipmentFilters,
   vehicleTypeFilters,
-} from "../../helpers/filterData";
-import { useDispatch } from "react-redux";
-import { locationsList } from "../../helpers/filterData";
-import { formattedLocation } from "./../../helpers/formattedLocation";
-import { fetchCampers } from "../../redux/campers/operations";
-import { clearItems, setFilters, setPage } from "../../redux/campers/slice";
+  locationsList,
+} from "@/helpers/filterData";
+import { formattedLocation } from "@/helpers/formattedLocation";
+import { fetchCampers } from "@/redux/campers/operations";
+import { clearItems, setFilters, setPage } from "@/redux/campers/slice";
 
-const FiltersForm = () => {
+export default function FiltersForm() {
   const dispatch = useDispatch();
   const theme = useTheme();
 
@@ -103,11 +105,11 @@ const FiltersForm = () => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <div className="locationContainer">
-        <label htmlFor="location" className="locationLabel">
+      <div className="location-container">
+        <label htmlFor="location" className="location-label">
           Location
         </label>
-        <div className="inputLocationContainer">
+        <div className="input-location-container">
           <Icon
             name="map"
             stroke={isInputFocused ? "#101828" : "#6C717B"}
@@ -115,7 +117,7 @@ const FiltersForm = () => {
             height="20"
           />
           <input
-            className="locationInput"
+            className="location-input"
             type="text"
             name="location"
             placeholder="City, Country"
@@ -132,10 +134,10 @@ const FiltersForm = () => {
           </datalist>
         </div>
       </div>
-      <p className="filtersTitle">Filters</p>
-      <div className="filtersContainer">
+      <p className="filters-title">Filters</p>
+      <div className="filters-container">
         <div>
-          <h3 className="filtersTypeTitle">Vehicle equipment</h3>
+          <h3 className="filters-type-title">Vehicle equipment</h3>
           <VehicleFilters>
             {vehicleEquipmentFilters.map(({ icon, text }) => (
               <EquipmentFilterItem
@@ -150,11 +152,11 @@ const FiltersForm = () => {
                   stroke={theme.iconColorFirst}
                   fill={theme.iconColorFirst}
                 />
-                <label htmlFor={text} className="labelText">
+                <label htmlFor={text} className="label-text">
                   {text}
                 </label>
                 <input
-                  className="filterCheckbox hidden"
+                  className="filter-checkbox hidden"
                   type="checkbox"
                   name="equipment"
                   value={text}
@@ -166,7 +168,7 @@ const FiltersForm = () => {
           </VehicleFilters>
         </div>
         <div>
-          <h3 className="filtersTypeTitle">Vehicle type</h3>
+          <h3 className="filters-type-title">Vehicle type</h3>
           <VehicleFilters>
             {vehicleTypeFilters.map(({ icon, text, value }) => (
               <VanTypeFilterItem
@@ -180,11 +182,11 @@ const FiltersForm = () => {
                   height={28}
                   fill={theme.iconColorFirst}
                 />
-                <label className="labelText" htmlFor={text}>
+                <label className="label-text" htmlFor={text}>
                   {text}
                 </label>
                 <input
-                  className="filterRadioBtn hidden"
+                  className="filter-radio-btn hidden"
                   type="radio"
                   name="form"
                   value={value}
@@ -197,16 +199,11 @@ const FiltersForm = () => {
         </div>
       </div>
       <ButtonsWrapper>
-      <DefaultBtn type="submit" text="Search" className="filter-btn" />
-      {filtersActive && (
-        <ResetBtn
-          type="button"
-          text="Reset"
-          onClick={handleReset}
-        />
-      )}</ButtonsWrapper>
+        <DefaultBtn type="submit" text="Search" className="filter-btn" />
+        {filtersActive && (
+          <ResetBtn type="button" text="Reset" onClick={handleReset} />
+        )}
+      </ButtonsWrapper>
     </Form>
   );
-};
-
-export default FiltersForm;
+}

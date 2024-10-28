@@ -2,8 +2,7 @@ import { Fragment } from "react";
 import Icon from "../Icon/Icon";
 import { CategoryNameWrapper, IconWrapper } from "./CategoryBadge.styled";
 
-const CategoryBadge = ({ icon, feature, featureQuantity }) => {
-
+export default function CategoryBadge({ icon, feature, featureQuantity }) {
   return (
     <Fragment>
       <IconWrapper>
@@ -14,6 +13,4 @@ const CategoryBadge = ({ icon, feature, featureQuantity }) => {
       </CategoryNameWrapper>
     </Fragment>
   );
-};
-
-export default CategoryBadge;
+}

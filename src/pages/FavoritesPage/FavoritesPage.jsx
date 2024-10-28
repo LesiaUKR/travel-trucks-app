@@ -1,17 +1,23 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+import ItemList from "@/components/ItemList/ItemList";
+import Loader from "@/components/Loader/Loader";
+import {
+  FavoritesContainer,
+  FavoritesSection,
+  MainFavoritesContent,
+  NoFavoritesText,
+} from "./FavoritesPage.styled";
+
+import { fetchAllCampers } from "@/redux/campers/operations";
 import {
   selectCampers,
   selectFavoriteCampers,
   selectIsLoading,
-} from "../../redux/campers/selectors";
-import ItemList from "./../../components/ItemList/ItemList";
-import { useEffect } from "react";
-import { fetchAllCampers } from "../../redux/campers/operations";
-import Loader from "../../components/Loader/Loader";
-import { FavoritesContainer, FavoritesSection, MainFavoritesContent, NoFavoritesText } from "./FavoritesPage.styled";
+} from "@/redux/campers/selectors";
 
-const FavoritesPage = () => {
-
+export default function FavoritesPage() {
   const dispatch = useDispatch();
   const campers = useSelector(selectCampers);
   const isLoading = useSelector(selectIsLoading);
@@ -19,7 +25,7 @@ const FavoritesPage = () => {
 
   useEffect(() => {
     if (campers.length === 0) {
-  dispatch(fetchAllCampers());
+      dispatch(fetchAllCampers());
     }
   }, [dispatch, campers.length]);
 
@@ -42,6 +48,4 @@ const FavoritesPage = () => {
       </FavoritesSection>
     </MainFavoritesContent>
   );
-};
-
-export default FavoritesPage;
+}

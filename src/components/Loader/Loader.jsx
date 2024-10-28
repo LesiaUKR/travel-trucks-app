@@ -1,6 +1,7 @@
 import { useTheme } from "styled-components";
+import { ThreeCircles } from "react-loader-spinner";
+
 import { LoaderWrapper } from "./Loader.styled";
-import { ThreeCircles } from 'react-loader-spinner';
 
 export default function Loader() {
   const theme = useTheme();

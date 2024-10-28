@@ -22,7 +22,7 @@ import {
 import { selectFavoriteCampers } from "@/redux/campers/selectors";
 import { toggleFavorite } from "@/redux/campers/slice";
 
-const ItemCard = ({ advert }) => {
+export default function ItemCard({ advert }) {
   const { id, name, price, rating, location, description, gallery, reviews } =
     advert;
 
@@ -78,6 +78,4 @@ const ItemCard = ({ advert }) => {
       </CardInfo>
     </ItemCardContainer>
   );
-};
-
-export default ItemCard;
+}

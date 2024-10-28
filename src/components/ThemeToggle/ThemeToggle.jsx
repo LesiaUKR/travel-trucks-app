@@ -10,7 +10,7 @@ import {
   ToggleSwitchSpan,
 } from "./ThemeToggle.styled";
 
-function ThemeToggle({ toggleTheme }) {
+export default function ThemeToggle({ toggleTheme }) {
   const theme = useTheme();
   const [isToggled, setIsToggled] = useState(false);
 
@@ -40,4 +40,3 @@ function ThemeToggle({ toggleTheme }) {
     </ThemeWrapper>
   );
 }
-export default ThemeToggle;

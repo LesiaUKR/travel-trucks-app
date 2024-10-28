@@ -1,8 +1,7 @@
 import ItemCard from "../ItemCard/ItemCard";
 import { CardList } from "./ItemList.styled";
 
-
-const ItemList = ({ campers}) => {
+export default function functionItemList({ campers }) {
   return (
     <CardList>
       {campers.map((camper) => (
@@ -10,6 +9,4 @@ const ItemList = ({ campers}) => {
       ))}
     </CardList>
   );
-};
-
-export default ItemList;
+}

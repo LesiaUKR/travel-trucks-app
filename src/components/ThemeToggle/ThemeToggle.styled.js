@@ -6,7 +6,6 @@ export const ThemeWrapper = styled.div`
   margin-left: auto;
 `;
 
-
 export const ToggleSwitchLabel = styled.label`
   position: relative;
   display: inline-block;
@@ -42,7 +41,7 @@ export const ToggleSwitchSpan = styled.span`
 `;
 export const StyledSwitchInput = styled(SwitchInput)`
   &:checked + ${ToggleSwitchSpan} {
-    background-color: #D84343;
+    background-color: #d84343;
   }
 
   &:checked + ${ToggleSwitchSpan}::before {

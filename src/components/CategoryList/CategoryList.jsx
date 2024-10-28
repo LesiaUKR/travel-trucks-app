@@ -1,7 +1,7 @@
 import CategoryBadge from "../CategoryBadge/CategoryBadge";
 import { CategoryListStyled } from "./CategoryList.styled";
 
-export default function CategoryList ({ categories }) {
+export default function CategoryList({ categories }) {
   return (
     <CategoryListStyled>
       {categories.map((category) => (
@@ -11,4 +11,4 @@ export default function CategoryList ({ categories }) {
       ))}
     </CategoryListStyled>
   );
-};
+}

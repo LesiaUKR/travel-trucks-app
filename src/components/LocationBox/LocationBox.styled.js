@@ -1,19 +1,18 @@
-import styled from 'styled-components';
-
+import styled from "styled-components";
 
 export const LocationWrapper = styled.div`
- display: flex;
-    align-items: center;
-    gap: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 
-    .icon-box {
+  .icon-box {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 16px;
     height: 16px;
   }
-    `
+`;
 
 export const LocationText = styled.span`
   font-size: 16px;

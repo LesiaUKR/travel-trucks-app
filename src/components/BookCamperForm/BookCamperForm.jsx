@@ -72,7 +72,7 @@ export default function BookCamperForm() {
           value={formData.name}
           onChange={handleChange}
         />
-        {errors.name && <p className="errorText">{errors.name}</p>}
+        {errors.name && <p className="error-text">{errors.name}</p>}
         </InputWrapper>
         <InputWrapper>
         <InputDefault
@@ -83,7 +83,7 @@ export default function BookCamperForm() {
           onChange={handleChange}
       
         />
-        {errors.email && <p className="errorText">{errors.email}</p>}
+        {errors.email && <p className="error-text">{errors.email}</p>}
         </InputWrapper>
         <InputWrapper>
         <InputDatePicker
@@ -95,7 +95,7 @@ export default function BookCamperForm() {
           name="bookingDate"
         />
         {errors.bookingDate && (
-          <p className="errorText">{errors.bookingDate}</p>
+          <p className="error-text">{errors.bookingDate}</p>
         )}
         </InputWrapper>
         <InputDefault
@@ -107,7 +107,7 @@ export default function BookCamperForm() {
           onChange={handleChange}
         />
       </BookFormInputsWrapper>
-      <DefaultBtn type="submit" text="Send" className="bookFormBtn" />
+      <DefaultBtn type="submit" text="Send" className="book-form-btn" />
       <Toaster position="top-right" />
     </BookForm>
   );

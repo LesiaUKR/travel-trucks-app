@@ -8,12 +8,12 @@ export const BookForm = styled.form`
   border-radius: 10px;
   border: 1px solid ${({ theme }) => theme.bookFormBorder};
 
-  .bookFormBtn {
+  .book-form-btn {
     display: block;
     margin: 0 auto;
     width: 166px;
   }
-  .errorText {
+  .error-text {
     position: absolute;
     top: -16px;
     left: 4px;
@@ -21,9 +21,6 @@ export const BookForm = styled.form`
     color: ${({ theme }) => theme.buttonHoverColor};
     margin: 0;
     padding: 0;
-  }
-  .error {
-    color: ${({ theme }) => theme.buttonHoverColor};
   }
 `;
 

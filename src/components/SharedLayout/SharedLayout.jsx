@@ -13,14 +13,14 @@ import {
   NavWrapper,
 } from "./SharedLayout.styled";
 
-const SharedLayout = ({ toggleTheme }) => {
+export default function SharedLayout({ toggleTheme }) {
   return (
     <>
       <Header>
         <HeaderContainer>
           <LogoWrapper>
-          <Link to="/">
-            <Logo />
+            <Link to="/">
+              <Logo />
             </Link>
           </LogoWrapper>
           <NavWrapper>
@@ -36,6 +36,4 @@ const SharedLayout = ({ toggleTheme }) => {
       </Suspense>
     </>
   );
-};
-
-export default SharedLayout;
+}

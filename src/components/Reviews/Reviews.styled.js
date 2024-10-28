@@ -1,10 +1,10 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 export const ReviewsList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 44px;
   max-width: 631px;
-  margin-top:12px;
+  margin-top: 12px;
 `;
 
 export const ReviewsItem = styled.li`
@@ -29,7 +29,7 @@ export const Avatar = styled.p`
 
   color: ${(props) => props.theme.buttonColor};
   font-size: var(--font-medium);
-  line-height: 1.33333;
+  line-height: 1.33;
   border-radius: 50%;
   background-color: ${(props) => props.theme.categoryBadgeBackground};
 `;
@@ -43,7 +43,6 @@ export const Info = styled.div`
 export const Name = styled.p`
   font-weight: 500;
   line-height: 1.5;
-
 `;
 
 export const Rating = styled.div`
@@ -55,24 +54,21 @@ export const Comment = styled.p`
   font-size: 16px;
   line-height: 1.5;
   font-style: normal;
-font-weight: 400;
+  font-weight: 400;
   color: ${(props) => props.theme.textColorSecondary};
 `;
 
 export const NoReviews = styled.p`
- 
   text-align: center;
   padding: 20px;
- 
 
   color: ${(props) => props.theme.textColorPrimary};
 
-font-family: Inter;
-font-size: 20px;
-font-style: normal;
-font-weight: 600;
-line-height: 1.2;
-
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.2;
 `;
 
 export const StarWrapper = styled.div`
@@ -80,7 +76,6 @@ export const StarWrapper = styled.div`
   display: inline-block;
 
   svg {
-    fill: #F2F4F7;
+    fill: #f2f4f7;
   }
 `;
-

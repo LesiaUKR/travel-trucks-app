@@ -4,11 +4,11 @@ import DefaultBtn from "../DefaultBtn/DefaultBtn";
 export const Form = styled.form`
   width: 360px;
 
-  .locationContainer {
+  .location-container {
     margin-bottom: 32px;
   }
 
-  .locationLabel {
+  .location-label {
     color: ${({ theme }) => theme.textColorThird};
     font-family: Inter;
     font-size: 16px;
@@ -16,12 +16,12 @@ export const Form = styled.form`
     font-weight: 500;
     line-height: 1.5;
   }
-  .inputLocationContainer {
+  .input-location-container {
     position: relative;
     margin-top: 8px;
   }
 
-  .locationInput {
+  .location-input {
     width: 100%;
     height: 56px;
     padding: 18px 0px 18px 44px;
@@ -46,17 +46,17 @@ export const Form = styled.form`
 
 }
 
-  .inputLocationContainer svg {
+  .input-location-container svg {
     position: absolute;
     top: 50%;
     left: 10px;
     transform: translateY(-50%);
   }
-  .inputLocationContainer .locationInput:focus + svg {
+  .input-location-container .location-input:focus + svg {
     stroke: #101828;
   }
 
-  .filtersContainer {
+  .filters-container {
     display: flex;
     flex-direction: column;
 
@@ -64,7 +64,7 @@ export const Form = styled.form`
     margin-bottom: 64px;
   }
 
-  .filtersTitle {
+  .filters-title {
     color: ${({ theme }) => theme.textColorSecondary};
     margin-bottom: 14px;
     font-size: 16px;
@@ -73,7 +73,7 @@ export const Form = styled.form`
     line-height: 1.5;
   }
 
-  .filtersTypeTitle {
+  .filters-type-title {
     margin-bottom: 24px;
     color: ${({ theme }) => theme.textColorPrimary};
     font-size: 20px;
@@ -98,7 +98,7 @@ export const VehicleFilters = styled.ul`
 
   padding-top: 24px;
   border-top: 1px solid ${({ theme }) => theme.borderColorDefault};
-  .filterWrap {
+  .filter-wrap {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -115,7 +115,7 @@ export const VehicleFilters = styled.ul`
   }
 
  
-  .labelText {
+  .label-text {
     margin-top: 9px;
     color: ${({ theme }) => theme.textColorPrimary};
 
@@ -149,7 +149,7 @@ export const EquipmentFilterItem = styled.li`
   &:hover {
     outline: 1px solid ${({ theme }) => theme.buttonColor};
   }
-  .filterCheckbox.hidden {
+  .filter-checkbox.hidden {
     position: absolute;
     opacity: 0;
   }
@@ -181,7 +181,7 @@ export const VanTypeFilterItem = styled.li`
 &:hover {
     outline: 1px solid ${({ theme }) => theme.buttonColor};
   }
-  .filterRadioBtn.hidden {
+  .filter-radio-btn.hidden {
     position: absolute;
     opacity: 0;
   }
@@ -201,6 +201,7 @@ export const ResetBtn = styled(DefaultBtn)`
   border: 1px solid ${({ theme }) => theme.loadMoreBtnBorder};
   background-color: ${({ theme }) => theme.loadMoreBgColor};
   color: ${({ theme }) => theme.loadMoreBtnText};
+  transition: background-color 0.3s ease;
 
   &:hover {
     border-color: ${({ theme }) => theme.loadMoreBtnBorderHover};

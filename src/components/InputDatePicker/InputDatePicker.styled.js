@@ -52,17 +52,18 @@ export const StyledDatePicker = styled(DatePicker)`
 `;
 
 export const DatePickerStyles = createGlobalStyle`
+
 .react-datepicker{
-  padding: 12px;
+ padding: 12px;
  background-color: ${({ theme }) => theme.calendarBgColor};
  color:${({ theme }) => theme.textColorPrimary};
-border: 1px solid ${({ theme }) => theme.calendarBorderColor};
+ border: 1px solid ${({ theme }) => theme.calendarBorderColor};
 
-font-family: Inter , sans-serif;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: 1.2;
+ font-family: Inter , sans-serif;
+ font-size: 14px;
+ font-style: normal;
+ font-weight: 400;
+ line-height: 1.2;
 }
 .react-datepicker-popper .react-datepicker {
   font-family: Inter, sans-serif;
@@ -82,7 +83,7 @@ line-height: 1.2;
   .react-datepicker__header {
     background-color: ${({ theme }) => theme.calendarBgColor};
     border-bottom: 1px solid ${({ theme }) => theme.calendarHeaderBorderColor};
-  margin-bottom: 14px;
+   margin-bottom: 14px;
   }
 
   .react-datepicker__current-month{

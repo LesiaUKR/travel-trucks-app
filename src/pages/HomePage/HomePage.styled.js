@@ -17,55 +17,52 @@ export const HomeMainContent = styled.main`
 `;
 
 export const HeroContainer = styled.div`
-width: 100%;
-max-width: 1440px;
-padding: 0px 64px 0px 64px;
-margin: 0 auto;
+  width: 100%;
+  max-width: 1440px;
+  padding: 0px 64px 0px 64px;
+  margin: 0 auto;
 
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: flex-start;
-`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+`;
 
 export const HeroTitle = styled.h1`
-margin-bottom: 16px;
-color: ${(props) => props.theme.inputBackground};
-font-size: 48px;
-font-style: normal;
-font-weight: 600;
-line-height: 0.67;
-`
+  margin-bottom: 16px;
+  color: ${(props) => props.theme.inputBackground};
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 0.67;
+`;
 export const HeroText = styled.p`
-margin-bottom: 40px;
-color: ${(props) => props.theme.inputBackground};
+  margin-bottom: 40px;
+  color: ${(props) => props.theme.inputBackground};
 
-font-size: 24px;
-font-style: normal;
-font-weight: 600;
-line-height: 1.33;
-
-`
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.33;
+`;
 export const HeroLink = styled(Link)`
- padding: 16px 48.5px;
+  padding: 16px 48.5px;
 
-border: none;
-border-radius: 200px;
-background-color: ${({ theme }) => theme.buttonColor};
+  border: none;
+  border-radius: 200px;
+  background-color: ${({ theme }) => theme.buttonColor};
 
-color: ${({ theme }) => theme.buttonTextColor};
+  color: ${({ theme }) => theme.buttonTextColor};
 
-font-family: "Inter", sans-serif;
-font-size: 16px;
-font-style: normal;
-font-weight: 500;
-line-height: 1.5;
-letter-spacing: -0.08px;
-transition: background-color 0.3s ease;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.08px;
+  transition: background-color 0.3s ease;
 
-&:hover{
-background-color:${({ theme }) => theme.buttonHoverColor};
-}
-`
-
-
+  &:hover {
+    background-color: ${({ theme }) => theme.buttonHoverColor};
+  }
+`;
