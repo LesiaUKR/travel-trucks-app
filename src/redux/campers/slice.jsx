@@ -25,15 +25,6 @@ const campersSlice = createSlice({
     setPage(state, action) {
       state.campers.currentPage = action.payload;
     },
-    setLocation(state, action) {
-      state.filter.location = action.payload;
-    },
-    setEquipment(state, action) {
-      state.filter.equipment = action.payload;
-    },
-    setType(state, action) {
-      state.filter.type = action.payload;
-    },
     setFilters(state, action) {
       state.filter = action.payload;
     },
@@ -108,9 +99,6 @@ const campersSlice = createSlice({
 
 export const campersReducer = campersSlice.reducer;
 export const {
-  setLocation,
-  setEquipment,
-  setType,
   toggleFavorite,
   setPage,
   clearItems,

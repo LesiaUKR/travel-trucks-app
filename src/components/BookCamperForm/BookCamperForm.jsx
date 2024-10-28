@@ -1,14 +1,17 @@
-import {
-  BookForm,
-  BookFormInputWrapper,
-  BookFormText,
-  BookFormTitle,
-} from "./BookCamperForm.styled";
+import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+
 import InputDefault from "../InputDefault/InputDefault";
 import InputDatePicker from "../InputDatePicker/InputDatePicker";
-import DefaultBtn from "./../DefaultBtn/DefaultBtn";
-import toast, { Toaster } from "react-hot-toast";
-import { useState } from "react";
+import DefaultBtn from "../DefaultBtn/DefaultBtn";
+
+import {
+  BookForm,
+  BookFormInputsWrapper,
+  BookFormText,
+  BookFormTitle,
+  InputWrapper,
+} from "./BookCamperForm.styled";
 
 export default function BookCamperForm() {
   const [formData, setFormData] = useState({
@@ -24,7 +27,7 @@ export default function BookCamperForm() {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleDateRangeChange  = (date) => {
+  const handleDateRangeChange = (date) => {
     setFormData((prevData) => ({ ...prevData, bookingDate: date }));
   };
 
@@ -62,26 +65,29 @@ export default function BookCamperForm() {
       <BookFormText>
         Stay connected! We are always ready to help you.
       </BookFormText>
-      <BookFormInputWrapper>
+      <BookFormInputsWrapper>
+      <InputWrapper>
         <InputDefault
           type="text"
           placeholder="Name*"
           name="name"
           value={formData.name}
           onChange={handleChange}
-          className={errors.name && "error"}
         />
-        {errors.name && <p className="error-text">{errors.name}</p>}
-
+        {errors.name && <p className="errorText">{errors.name}</p>}
+        </InputWrapper>
+        <InputWrapper>
         <InputDefault
           type="email"
           placeholder="Email*"
           name="email"
           value={formData.email}
           onChange={handleChange}
-          className={errors.email && "error"}
+      
         />
-        {errors.email && <p className="error-text">{errors.email}</p>}
+        {errors.email && <p className="errorText">{errors.email}</p>}
+        </InputWrapper>
+        <InputWrapper>
         <InputDatePicker
           className="bookFormInput"
           placeholder="Booking date*"
@@ -91,8 +97,9 @@ export default function BookCamperForm() {
           name="bookingDate"
         />
         {errors.bookingDate && (
-          <p className="error-text">{errors.bookingDate}</p>
+          <p className="errorText">{errors.bookingDate}</p>
         )}
+        </InputWrapper>
         <InputDefault
           type="textarea"
           className="bookFormTextarea"
@@ -101,7 +108,7 @@ export default function BookCamperForm() {
           value={formData.comment}
           onChange={handleChange}
         />
-      </BookFormInputWrapper>
+      </BookFormInputsWrapper>
       <DefaultBtn type="submit" text="Send" className="bookFormBtn" />
       <Toaster position="top-right" />
     </BookForm>

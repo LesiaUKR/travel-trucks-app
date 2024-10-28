@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { Suspense } from "react";
 
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
@@ -19,7 +19,9 @@ const SharedLayout = ({ toggleTheme }) => {
       <Header>
         <HeaderContainer>
           <LogoWrapper>
+          <Link to="/">
             <Logo />
+            </Link>
           </LogoWrapper>
           <NavWrapper>
             <StyledLink to="/">Home</StyledLink>
