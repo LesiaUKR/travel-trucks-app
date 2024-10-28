@@ -47,8 +47,8 @@ const CatalogPage = () => {
   return (
     <CatalogMainContent>
            <Helmet>
-        <title>Home Page - Мій сайт</title>
-        <meta name="description" content="Look through catalof of travel trucks" />
+        <title>Travel Trucks Catalog Page</title>
+        <meta name="description" content="Look through catalog of the travel trucks" />
       </Helmet>
       <AsideContainer>
         <FilterBar />
