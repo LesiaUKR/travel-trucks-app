@@ -3,23 +3,23 @@ import styled from "styled-components";
 import heroVanWithSunset from "/images/hero-van-with-sunset.png";
 
 export const HomeMainContent = styled.main`
-  padding-top: 72px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  margin-top: 72px;
   min-height: calc(100vh - 72px);
-`;
-
-
-export const HomeSection = styled.section`
+  background-color: var(--gray-light);
   background-image: url(${heroVanWithSunset});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: 100vh; 
 `;
 
 export const HeroContainer = styled.div`
+width: 100%;
 max-width: 1440px;
 padding: 0px 64px 0px 64px;
-height: 100%;
 margin: 0 auto;
 
 display: flex;
