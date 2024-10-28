@@ -1,6 +1,5 @@
 import {
   HeroContainer,
-  HomeSection,
   HeroTitle,
   HeroLink,
   HeroText,
