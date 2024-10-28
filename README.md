@@ -49,10 +49,10 @@ The frontend interacts with a mock API for campervan data, accessible at [Mock A
 ## License
 This project is licensed under the MIT License.
 
-![HOME PAGE](./assets/my-image.jpg)
-![CATALOG PAGE](./assets/my-image.jpg)
-![CAMPER DETAILS PAGE FEATURES](./assets/my-image.jpg)
-![CAMPER DETAILS PAGE REVIES](./assets/my-image.jpg)
-![FAVORITES PAGE](./assets/my-image.jpg)
-![NOTFOUND PAGE](./assets/my-image.jpg)
-![NIGHT VIEW CATALOG PAGE](./assets/my-image.jpg)
+![HOME PAGE](/public/assets/home-page.jpg)
+![CATALOG PAGE](/public/assets/catalog-page.png)
+![CATALOG PAGE NIGHT VIEW ](/public/assets/catalog-page.png)
+![CAMPER DETAILS PAGE FEATURES](/public/assets/camper-details-page-features.png)
+![CAMPER DETAILS PAGE REVIES](/public/assets/camper-details-page-review-bookingform.png)
+![FAVORITES PAGE](/public/assets/favorites-page.png)
+![NOTFOUND PAGE](/public/assets/not-found-page.png)
