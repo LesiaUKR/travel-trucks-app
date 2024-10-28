@@ -24,6 +24,14 @@ export const darkTheme = {
    loadMoreBtnBorder: "#DADDE1",
    loadMoreBtnBorderHover: "#D84343",
    loadMoreBgColor: "#fff",
+   calendarBgColor: "#101828",
+   calendarHeaderBorderColor: "#fff",
+   datepickerDayDisabled: "#475467",
+   calendarTriangleStroke:"#101828",
+   calendarBorderColor:"#fff",
+   calendarDateToday:"#101828",
+   calendarSelectedDayColor:"#fff",
+   calendarSelectedDayBgColor:"#475467",
  };
  export const lightTheme = {
    body: "#fff",
@@ -51,5 +59,13 @@ export const darkTheme = {
    loadMoreBtnBorder: "#DADDE1",
    loadMoreBtnBorderHover: "#D84343",
    loadMoreBgColor: "#fff",
+   calendarBgColor: "#fff",
+   calendarHeaderBorderColor: "#101828",
+   datepickerDayDisabled: "#475467",
+   calendarBorderColor:"#475467",
+   calendarTriangleStroke:"#475467",
+   calendarDateToday:"#fff",
+   calendarSelectedDayColor:"#101828",
+   calendarSelectedDayBgColor:"#DADDE1",
  };
  

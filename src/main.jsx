@@ -7,6 +7,7 @@ import { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "./Themes";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+import { DatePickerStyles } from "./components/InputDatePicker/InputDatePicker.styled";
 
 
 
@@ -21,6 +22,7 @@ const Index = () => {
     <React.StrictMode>
       <ThemeProvider theme={themeMode === "light" ? lightTheme : darkTheme}>
         <BrowserRouter basename="/">
+        <DatePickerStyles />
           <GlobalStyle />
  <Provider store={store}>
           <App toggleTheme={toggleTheme} />

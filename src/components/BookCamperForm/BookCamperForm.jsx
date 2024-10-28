@@ -14,7 +14,7 @@ export default function BookCamperForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    bookingDate: "",
+    bookingDate: [null, null],
     comment: "",
   });
   const [errors, setErrors] = useState({});
@@ -24,7 +24,7 @@ export default function BookCamperForm() {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleDateChange = (date) => {
+  const handleDateRangeChange  = (date) => {
     setFormData((prevData) => ({ ...prevData, bookingDate: date }));
   };
 
@@ -33,8 +33,8 @@ export default function BookCamperForm() {
     if (!formData.name.trim()) newErrors.name = "Name is required";
     if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email))
       newErrors.email = "Valid email is required";
-    if (!formData.bookingDate)
-      newErrors.bookingDate = "Booking date is required";
+    if (!formData.bookingDate[0] || !formData.bookingDate[1])
+      newErrors.bookingDate = "Booking date range is required";
     return newErrors;
   };
 
@@ -46,11 +46,11 @@ export default function BookCamperForm() {
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-      toast.success("Booking successful!");
+      toast.success("Your booking is successful!");
       setFormData({
         name: "",
         email: "",
-        bookingDate: "",
+        bookingDate: [null, null],
         comment: "",
       });
     }
@@ -85,8 +85,9 @@ export default function BookCamperForm() {
         <InputDatePicker
           className="bookFormInput"
           placeholder="Booking date*"
-          selectedDate={formData.bookingDate}
-          onChange={handleDateChange}
+          startDate={formData.bookingDate[0]}
+          endDate={formData.bookingDate[1]}
+          onChange={handleDateRangeChange}
           name="bookingDate"
         />
         {errors.bookingDate && (
