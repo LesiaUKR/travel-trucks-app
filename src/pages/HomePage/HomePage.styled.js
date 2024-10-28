@@ -9,7 +9,7 @@ export const HomeMainContent = styled.main`
   align-items: center;
   margin-top: 72px;
   min-height: calc(100vh - 72px);
-  background-color: var(--gray-light);
+  background-color: ${(props) => props.theme.headerBgColor};
   background-image: url(${heroVanWithSunset});
   background-repeat: no-repeat;
   background-position: center;
