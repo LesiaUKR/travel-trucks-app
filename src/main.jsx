@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import { GlobalStyle } from "./Globalstyle";
+import ReactDOM from "react-dom/client";
 import { ThemeProvider } from "styled-components";
-import { darkTheme, lightTheme } from "./Themes";
 import { Provider } from "react-redux";
-import { store } from "./redux/store";
-import { DatePickerStyles } from "./components/InputDatePicker/InputDatePicker.styled";
 import { HelmetProvider } from "react-helmet-async";
+
+import App from "./App";
+import { DatePickerStyles } from "@components/InputDatePicker/InputDatePicker.styled";
+
+import { GlobalStyle } from "@styles/Globalstyle";
+import { darkTheme, lightTheme } from "./Themes";
+import { store } from "./redux/store";
 
 const Index = () => {
   const [themeMode, setThemeMode] = useState("light");
