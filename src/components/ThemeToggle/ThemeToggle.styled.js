@@ -42,7 +42,7 @@ export const ToggleSwitchSpan = styled.span`
 `;
 export const StyledSwitchInput = styled(SwitchInput)`
   &:checked + ${ToggleSwitchSpan} {
-    background-color: #2bc6ff;
+    background-color: #D84343;
   }
 
   &:checked + ${ToggleSwitchSpan}::before {
